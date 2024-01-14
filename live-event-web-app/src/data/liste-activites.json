@@ -1,0 +1,28 @@
+[
+    {
+        "nom": "totoletaureau",
+        "type": "taureau machine",
+        "public": "tout public",
+        "prix": "gratuit",
+        "zone": "3",
+        "emplacement": "nord"
+    },
+
+    {
+        "nom": "tzzzzaie",
+        "type": "tatouage",
+        "public": "majeur",
+        "prix": "catalogue",
+        "zone": "3",
+        "emplacement": "sud"
+    },
+
+    {
+        "nom": "killer instinct",
+        "type": "lancer de hache",
+        "public": "majeur",
+        "prix": "gratuit",
+        "zone": "3",
+        "emplacement": "est"
+    }
+]
