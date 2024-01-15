@@ -8,9 +8,9 @@ function ConcertCard({ id, date, heure, artiste, description, loved }){
     <li className='concertCard'>
       <img alt=''></img>
       <div>
-        <span>{ artiste }</span>
-        <span>{ date }</span>
-        <span>{ description }</span>
+        <span>{ artiste } </span>
+        <span>{ date } </span>
+        <span>{ description } </span>
       </div>
       <input type='checkbox' checked={ loved } onChange={ toggleCheck } ></input>
       <span>{ heure }</span>
