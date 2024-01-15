@@ -1,7 +1,7 @@
 [
     {
         "id": 1,
-        "date": "13/07",
+        "date": "13-07",
         "heure": "17h00",
         "artiste": "rapetou",
         "scene": "a",
@@ -10,7 +10,7 @@
 
     {
         "id": 2,
-        "date": "13/07",
+        "date": "13-07",
         "heure": "18h00",
         "artiste": "jazzaphon",
         "scene": "a",
@@ -19,7 +19,7 @@
 
     {
         "id": 3,
-        "date": "13/07",
+        "date": "13-07",
         "heure": "19h00",
         "artiste": "classix",
         "scene": "a",
@@ -28,7 +28,7 @@
 
     {
         "id": 4,
-        "date": "14/07",
+        "date": "14-07",
         "heure": "17h00",
         "artiste": "michel jacqueson",
         "scene": "b",
@@ -37,7 +37,7 @@
 
     {
         "id": 5,
-        "date": "14/07",
+        "date": "14-07",
         "heure": "18h00",
         "artiste": "ariette francklin",
         "scene": "b",
@@ -46,7 +46,7 @@
 
     {
         "id": 6,
-        "date": "14/07",
+        "date": "14-07",
         "heure": "19h00",
         "artiste": "charlo znavour",
         "scene": "b",

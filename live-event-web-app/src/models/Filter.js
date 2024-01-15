@@ -1,19 +1,41 @@
-// models/Filter.js
+// Filter.js
 import { useAppContext } from '../context';
 
-function Select() {
-  const filterProgrammation = ["12/07", "13/07", "14/07"];
-  const { dispatch } = useAppContext();
+// ...
 
-  const handleOnSelect = (e) => dispatch({ type: "select", payload: { date: e.target.value } });
+function Select() {
+  const { state, dispatch } = useAppContext();
+
+  const handleOnSelect = (e) => {
+    const selectedDate = e.target.value;
+    const selectedDates = e.target.checked
+      ? [...state.selectedDates, selectedDate]
+      : state.selectedDates.filter((date) => date !== selectedDate);
+
+    dispatch({
+      type: "select",
+      payload: { selectedDates: selectedDates }
+    });
+  };
 
   return (
-    <div>
-      {filterProgrammation.map((filter) => (
-        <input key={filter} value={filter} onChange={handleOnSelect} />
+    <div className='container d-flex justify-content-evenly'>
+      {state.filterProgrammation.map((filter) => (
+        <span key={filter.key}>
+          {filter.key}
+          <input
+            type='checkbox'
+            onChange={handleOnSelect}
+            value={filter.date}
+            checked={state.selectedDates.includes(filter.date)}
+          />
+        </span>
       ))}
     </div>
   );
 }
+
+// ...
+
 
 export default Select;
