@@ -1,5 +1,5 @@
 // views/Programmation.js
-import { useAppContext } from '../context';
+import { useAppContext } from '../../context.js';
 
 function ConcertCard({ id, date, heure, artiste, description, loved }){
   const { dispatch } = useAppContext();

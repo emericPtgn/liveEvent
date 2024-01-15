@@ -1,5 +1,5 @@
 // Filter.js
-import { useAppContext } from '../context';
+import { useAppContext } from '../../context';
 
 // ...
 
