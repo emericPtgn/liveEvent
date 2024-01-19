@@ -28,6 +28,7 @@ function Select() {
             onChange={handleOnSelect}
             value={filter.date}
             checked={state.selectedDates.includes(filter.date)}
+            name={filter.date}
           />
         </span>
       ))}

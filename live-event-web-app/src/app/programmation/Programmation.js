@@ -12,7 +12,7 @@ function ConcertCard({ id, date, heure, artiste, description, loved }){
         <span>{ date } </span>
         <span>{ description } </span>
       </div>
-      <input type='checkbox' checked={ loved } onChange={ toggleCheck } ></input>
+      <input type='checkbox' name={ artiste } checked={ loved } onChange={ toggleCheck } ></input>
       <span>{ heure }</span>
     </li>
   )
@@ -28,5 +28,7 @@ function Programmation(){
     </ul>
   )
 }
+
+
 
 export default Programmation;

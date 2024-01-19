@@ -1,6 +1,7 @@
 import { createContext, useContext, useReducer } from "react";
 import concerts from './data/liste-concerts.json';
 
+
 const Context = createContext();
 const { Provider, Consumer } = Context;
 
@@ -28,7 +29,8 @@ const initialState = {
     filterProgrammation : filters,
     totalTicketsToBuy : {vendredi : 50000, samedi : 75000, dimanche : 30000},
     lovedArtists : lovedArtists,
-    selectedDates: [] // Ajout de la propriété selectedDates
+    selectedDates: [], // Ajout de la propriété selectedDates
+    programmationFromApi: []
 
 }
 
@@ -56,6 +58,13 @@ function reducer(state, action) {
             programmationToDisplay: filtered,
             selectedDates: selectedDates
         };
+
+/*         case "FETCH_PROGRAMMATION_SUCCESS":
+            console.log(state.programmationFromApi)
+            return {
+                ...state,
+                programmationFromApi: action.payload,
+            } */
 
 
         default:

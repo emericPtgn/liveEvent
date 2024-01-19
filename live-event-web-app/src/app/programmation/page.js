@@ -5,6 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MenuNavigation from '../../components/navbar.js';
+import FetchMapItemsFromApi from '../../models/wpapi.js'
 
 const Page = () => {
   return (
