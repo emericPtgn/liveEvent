@@ -1,0 +1,29 @@
+// Redéfinir les couleurs par défaut de Bootstrap
+$theme-colors: (
+  "primary": #2a9d8f,
+  "secondary": #e9c46a,
+);
+
+// Importer Bootstrap
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Définir les teintes d'indigo
+$indigo-100: tint-color($indigo, 80%) !default;
+$indigo-200: tint-color($indigo, 60%) !default;
+$indigo-300: tint-color($indigo, 40%) !default;
+$indigo-400: tint-color($indigo, 20%) !default;
+$indigo-500: $indigo !default;
+$indigo-600: shade-color($indigo, 20%) !default;
+$indigo-700: shade-color($indigo, 40%) !default;
+$indigo-800: shade-color($indigo, 60%) !default;
+$indigo-900: shade-color($indigo, 80%) !default;
+
+// Utiliser les nuances d'indigo définies dans $indigo
+.my-indigo-element {
+  background-color: $indigo-700; // Utiliser la couleur indigo-500
+  color: $color-contrast-light; // Utiliser la couleur de texte de contraste définie dans Bootstrap
+}
+
+.my-test-bg-color {
+  background-color: $white; // Utiliser la couleur définie comme "white" dans Bootstrap
+}

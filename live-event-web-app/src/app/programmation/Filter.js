@@ -1,5 +1,5 @@
 // Filter.js
-import { useAppContext } from '../context';
+import { useAppContext } from '../../context';
 
 // ...
 
@@ -28,6 +28,7 @@ function Select() {
             onChange={handleOnSelect}
             value={filter.date}
             checked={state.selectedDates.includes(filter.date)}
+            name={filter.date}
           />
         </span>
       ))}

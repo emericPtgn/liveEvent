@@ -1,15 +1,20 @@
 // App.js
 
 import React from 'react';
-import Programmation from '../src/views/Programmation.js';
-import Select from '../src/models/Filter.js'
+// import Programmation from './app/programmation/Programmation.js';
+// import Select from './app/programmation/Filter.js'
+import AppRouter from './AppRouter.js';
+// import Navigation from './app/Navigation.js';
+import DataLoader from './data/getDataFromApi.js';
 
 const App = () => {
+  DataLoader()
   return (
     <div>
       {/* Autres composants ou éléments */}
-      <Select />
-      <Programmation />
+      <AppRouter />
+      {/* <Select /> */}
+      {/* <Programmation /> */}
       {/* Autres composants ou éléments */}
     </div>
   );
