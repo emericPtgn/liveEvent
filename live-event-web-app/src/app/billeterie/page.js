@@ -3,6 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MenuNavigation from '../../components/navbar.js' ;
+import ListeConcerts from '../../components/listConcerts.js';
+import Filtre from '../../components/selectFilter.js';
 
 const TicketPage = () => {
   return (
@@ -10,6 +12,9 @@ const TicketPage = () => {
       <Row>
         <Col>
           <MenuNavigation />
+          <Filtre />
+          <ListeConcerts />
+
         </Col>
       </Row>
     </Container>

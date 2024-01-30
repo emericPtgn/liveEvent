@@ -1,11 +1,10 @@
 // `app/programmation/page.js` is the UI for the `/dashboard` URL
-import Programmation from './Programmation.js'
-import Select from './Filter.js'
+import ListeConcerts from '../../components/listConcerts.js';
+import Filtre from '../../components/selectFilter.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MenuNavigation from '../../components/navbar.js';
-import FetchMapItemsFromApi from '../../models/wpapi.js'
 
 const Page = () => {
   return (
@@ -16,8 +15,9 @@ const Page = () => {
           <br />
           <h2>Découvrez la programmation 2024</h2>
           {/* <Image src="/images/homepage-main-image.jpg" fluid /> */}
-          <Select />
-          <Programmation />
+          <Filtre />
+          <ListeConcerts />
+
         </Col>
       </Row>
     </Container>

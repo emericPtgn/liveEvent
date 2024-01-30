@@ -1,5 +1,6 @@
 import { createContext, useContext, useReducer } from "react";
 import concerts from './data/liste-concerts.json';
+import FetchShowDataFromWpApi from './data/getFromWpApi.js'
 
 
 const Context = createContext();
@@ -15,6 +16,7 @@ const lovedArtists = [
     {id : 6, artistName: "charlo znavour", youtubeLink : "www.youtube.fr/charlo znavour",  loved : false}
 
 ]
+
 const filters = [
     {date : "12-07", active : false, key : "vendredi"}, 
     {date : "13-07", active : false, key : "samedi"}, 
@@ -33,6 +35,7 @@ const initialState = {
     programmationFromApi: []
 
 }
+
 
 function reducer(state, action) {
     switch(action.type) {
@@ -59,16 +62,13 @@ function reducer(state, action) {
             selectedDates: selectedDates
         };
 
-/*         case "FETCH_PROGRAMMATION_SUCCESS":
-            console.log(state.programmationFromApi)
+        case 'FETCH_PROGRAMMATION_SUCCESS':
             return {
-                ...state,
-                programmationFromApi: action.payload,
-            } */
-
+                programmationFromApi: action.payload
+            }; 
 
         default:
-            throw new Error();
+            throw new Error()
 
 }}
 

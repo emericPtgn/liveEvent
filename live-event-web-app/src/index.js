@@ -1,9 +1,9 @@
 // index.js
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './index.css';
-import AppProvider from './context';
+import './App.scss'
+// import './index.css';
+import AppProvider from './context2.js';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
 
