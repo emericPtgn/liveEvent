@@ -6,7 +6,7 @@ import CartAccess from "./cart";
 const MenuNavigation = () => {
   return (
     <div>
-      <Navbar className='text-center'>
+      <Navbar className='d-flex justify-content-end'>
         <Navbar.Brand href="http://localhost:3000/" >accueil</Navbar.Brand>
         <Navbar.Brand href="http://localhost:3000/programmation" >lineup</Navbar.Brand>
         <Navbar.Brand href="http://localhost:3000/billeterie" >billeterie</Navbar.Brand>

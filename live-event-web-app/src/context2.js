@@ -1,9 +1,16 @@
 import { createContext, useReducer, useContext } from "react";
 import moment from "moment";
 import 'moment/locale/fr'
+import Cookies from "js-cookie";
 
 const Context = createContext();
 const { Provider, Consumer } = Context;
+
+
+// Vérifier si les cookies existent et les initialiser avec une valeur par défaut si nécessaire
+const initialCartContent = JSON.parse(Cookies.get('cartContent') || '[]');
+const initialCartTotal = parseInt(Cookies.get('cartTotal') || '0');
+
 
 const initialState = {
   programmation: [],
@@ -14,14 +21,15 @@ const initialState = {
     {'Libellé': '14-07', 'activ': false},
   ],
   tickets: [],
-  cartContent: [],
-  cartTotal: 0,
+  cartContent: initialCartContent,
+  cartTotal: initialCartTotal,
   markers: [],
   allMarkers: [],
   mapFilters: [],
   activMapFilters: [],
   dataLoaded: false,
 };
+
 
 function reducer(state, action) {
   switch (action.type) {
@@ -56,8 +64,7 @@ function reducer(state, action) {
       concert.artiste_nom === 'JAZZAPHON' ? {...concert, pict: require('./images/rapetou.png')} : 
       concert.artiste_nom === 'RAPETOU GANG' ? {...concert, pict: require('./images/alien.png')} : 
       null)
-     
-    console.log(addPictToProgrammation)
+
       return {
         ...state,
         programmation: addPictToProgrammation,
@@ -110,7 +117,6 @@ function reducer(state, action) {
       };
     });
   
-    console.log(properTickets);
   
     return {
       ...state,
@@ -131,22 +137,30 @@ function reducer(state, action) {
       const newItem = { id: ticketId, qte: 1, price: numericValue, total: numericValue };
       const updatedCartContent = [...state.cartContent, newItem];
       const updatedCartTotal = state.cartTotal + newItem.total;
-  
+
+      Cookies.set('cartContent', JSON.stringify(updatedCartContent));
+      Cookies.set('cartTotal', updatedCartTotal);
+
+      console.log(updatedCartContent, updatedCartTotal)
+
       return {
         ...state,
         cartContent: updatedCartContent,
         cartTotal: updatedCartTotal
       };
 
+
     } else {
-      const updatedCartContent = state.cartContent.map(item =>
-        item.id === ticketId ?
-          { ...item, qte: item.qte + 1, total: (item.total + numericValue) } :
-          item
-      );
-  
+    
+      const updatedCartContent = state.cartContent.map(item => item.id === ticketId ?
+          { ...item, qte: item.qte + 1, total: (item.total + numericValue) } : item);
       const updatedCartTotal = state.cartTotal + numericValue;
-  
+
+      Cookies.set('cartContent', JSON.stringify(updatedCartContent))
+      Cookies.set('cartTotal', updatedCartTotal)
+
+      console.log(updatedCartContent, updatedCartTotal)
+
       return {
         ...state,
         cartContent: updatedCartContent,
@@ -155,35 +169,49 @@ function reducer(state, action) {
     }
   }
   
-  
   case 'updateCartFromQteSelector': {
     const ticketId = action.payload.id
-    const ticketQte = action.payload.qte
+    const newQte = parseInt(action.payload.qte)
     const ticketPrice = action.payload.price
-    const ticketTotal = ticketQte * ticketPrice;
-
+    const updateTicketTotal = newQte * ticketPrice;
     const isItem = state.cartContent.find(item => item.id === ticketId);
+    let updatedCartTotal = 0
 
     if (isItem) {
         // Déduire le montant de la quantité précédente multipliée par le prix
-        const updatedCartTotal = state.cartTotal - (isItem.qte * ticketPrice);
+        const updateCartTotal = state.cartTotal - (isItem.qte * ticketPrice);
 
-        const updateQteCartLine = state.cartContent.map(item =>
+        const updatedCartContent = state.cartContent.map(item =>
             item.id === ticketId ?
-            {...item, qte: ticketQte, total: ticketTotal} :
+            {...item, qte: newQte, total: updateTicketTotal} :
             item
         );
 
+        updatedCartTotal = updateCartTotal + updateTicketTotal
+        Cookies.set('cartContent', JSON.stringify(updatedCartContent))
+        Cookies.set('cartTotal', updatedCartTotal)
+
+        console.log(updatedCartContent, updatedCartTotal)
+
         return {
             ...state,
-            cartContent: updateQteCartLine,
-            cartTotal: updatedCartTotal + ticketTotal
+            cartContent: updatedCartContent,
+            cartTotal: updateCartTotal + updateTicketTotal
         }
     } else {
         return null;
     }
 }
 
+case 'handleDeletedItemFromCart': {
+  const updatedCartContent = state.cartContent.filter(product => product.id !== action.payload.id)
+  Cookies.set('cartContent', JSON.stringify(updatedCartContent))
+
+  return {
+    ...state,
+    cartContent : updatedCartContent
+  }
+}
   
   case 'updateProgrammationFromFilter': {
     const selectedFiltre = action.payload.choosenDate;

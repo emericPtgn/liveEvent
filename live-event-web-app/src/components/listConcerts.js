@@ -9,7 +9,6 @@ import Col from 'react-bootstrap/Col';
 export default function ListeConcerts() {
 
   const { state } = useAppContext();
-  state.programmation.map(concert => console.log(concert.pict))
   if (!state.dataLoaded) {
     // Affichez un message de chargement ici si nécessaire
     return (

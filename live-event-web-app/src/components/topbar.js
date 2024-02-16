@@ -8,7 +8,7 @@ export const TopBar = () => {
       <Row className="d-flex justify-content-between d-md-none" style={{ borderBottomStyle: 'solid', borderBottomWidth: 1, borderBottomColor: '0A0901' }}>
         <NavBar />
       </Row>
-      <Row className="d-flex justify-content-between d-none d-md-block">
+      <Row className="d-none d-md-flex align-items-center">
         <Col md={4}>
           <Logo />
         </Col>
@@ -34,6 +34,7 @@ const NavBar = () => {
             <Nav.Link href="http://localhost:3000/programmation">Programmation</Nav.Link>
             <Nav.Link href="http://localhost:3000/billeterie">Billeterie</Nav.Link>
             <Nav.Link href="http://localhost:3000/map">Carte</Nav.Link>
+            <Nav.Link href="">Panier</Nav.Link>
             <NavDropdown title="Infos pratiques" id="navbarDropdown">
               <NavDropdown.Item href="#">Action</NavDropdown.Item>
               <NavDropdown.Item href="#">Another action</NavDropdown.Item>
