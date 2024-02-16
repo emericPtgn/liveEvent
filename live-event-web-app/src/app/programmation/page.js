@@ -1,23 +1,25 @@
-// `app/programmation/page.js` is the UI for the `/dashboard` URL
-import ListeConcerts from '../../components/listConcerts.js';
 import Filtre from '../../components/selectFilter.js';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import MenuNavigation from '../../components/navbar.js';
+import { TopBar } from '../../components/topbar.js';
+import ListeConcerts from '../../components/listConcerts.js';
+import { Footer } from '../../components/footer';
 
 const Page = () => {
   return (
-    <Container fluid>
+    <Container fluid className='home-page-bg-color'>
       <Row>
         <Col>
-          <MenuNavigation />
+          <TopBar />
           <br />
-          <h2>Découvrez la programmation 2024</h2>
+          <div className='intro-homepage text-center mt-4'>
+          <h1>PROGRAMMATION 2024</h1>
+          </div>
           {/* <Image src="/images/homepage-main-image.jpg" fluid /> */}
           <Filtre />
           <ListeConcerts />
-
+          <Footer />
         </Col>
       </Row>
     </Container>

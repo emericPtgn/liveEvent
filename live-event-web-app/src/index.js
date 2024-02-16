@@ -6,7 +6,6 @@ import './App.scss'
 import AppProvider from './context2.js';
 import App from './App';
 // import reportWebVitals from './reportWebVitals';
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <StrictMode>

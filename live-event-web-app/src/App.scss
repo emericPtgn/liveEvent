@@ -1,8 +1,59 @@
 // Redéfinir les couleurs par défaut de Bootstrap
+
+@import url('https://fonts.googleapis.com/css?family=ABeeZee:700|Proza%20Libre:400');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'AbeeZee';
+}
+
+.main-title {
+  font-family: 'AbeeZee';
+  font-size: 24px;
+  color: #0A0901;
+}
+
+.emphase-title {
+  font-family: 'Poppins';
+  font-size: 1em;
+  font-weight: 700;
+  background-color: #f0ca0fa8 ;
+}
+
 $theme-colors: (
-  "primary": #2a9d8f,
-  "secondary": #e9c46a,
+  'text': #0A0901,
+  'background': #FFFDF7,
+  'primary': #f0ca0f,
+  'secondary': #84F77E,
+  'accent': #55F585,
+  'dark-grey': rgba(123, 132, 132, 0.15),
+  'light-grey': rgba(248, 248, 248, 0.354)
 );
+
+@font-face {
+  font-family: 'Proza';
+  font-style: normal;
+  font-weight: 400;  /* Poids de la police régulière */
+  src: url('../public/fonts/Proza_Libre/ProzaLibre-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Abeezee';
+  font-style: normal;
+  font-weight: 700;  /* Poids de la police en gras */
+    src: url('../public/fonts/ABeeZee/ABeeZee-Regular.ttf');
+}
+
+/* Ajoutez des règles @font-face pour d'autres variantes si nécessaire */
+
+/* Utilisez la police dans vos sélecteurs */
+body {
+  font-family: 'Open Sans', serif;
+}
+
+/* Autres styles CSS/SCSS */
+
+
 
 // Importer Bootstrap
 @import '~bootstrap/scss/bootstrap.scss';
@@ -27,3 +78,259 @@ $indigo-900: shade-color($indigo, 80%) !default;
 .my-test-bg-color {
   background-color: $white; // Utiliser la couleur définie comme "white" dans Bootstrap
 }
+
+.home-page-bg-color {
+  background-image: url('./images/bg-star.svg');
+}
+
+.navbar-expand {
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.texte-menu-home{
+  font-size: 25px;
+  color: white;
+}
+
+.texte-intro-home {
+  color: white;
+}
+
+.heart-anim-from-banner {
+  z-index: 0;
+}
+
+.banner {
+  margin-top: 0;
+  padding: 50px 0;
+  height: 500px;
+  background-image: url('');
+  background-position : top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.banner .tagline {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%n rgba(74, 47, 189, 0.5) 10%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: inline-block;
+  color: #0A0901;
+}
+
+.banner h1  {
+  font-size: 65px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height:  1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.banner p  {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  width: 96%;
+}
+
+#btn-home-bloc1-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 30px;
+  height: 100px;
+}
+
+.banner button {
+  background-color: #F0CA0F;
+  color: #fff;
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: none;
+  padding: 5px 15px;
+}
+
+.banner button svg {
+  font-size: 25px; 
+  margin-left: 10px;
+  transition: 0.3s ease-in-out;
+  line-height: 1;
+}
+
+.banner button:hover svg {
+  margin-left: 25px;
+}
+
+.banner svg.svg-anim  {
+  animation: updown 3s linear infinite
+}
+
+#Path_847:hover {
+  fill: #2a9d8f;
+}
+
+.btn-primary {
+  border-radius: 5%;
+  background-color: #F0CA0F;
+  color: #0A0901;
+  font-family: 'Poppins';
+  font-size: 12px;
+  font-weight: 300;
+  padding: 10px 20px;
+  width: fit-content;
+  border: none;
+}
+
+/* styles.scss */
+
+.intro-homepage {
+  h1 {
+    color: transparent; /* Texte sans couleur */
+    -webkit-text-stroke: 2px black; /* Bordure noire */
+    text-stroke: 2px black; /* Bordure noire */
+    display: inline-block; /* Pour éviter que le texte ne s'étende à 100% de la largeur */
+  }
+}
+
+.concert-artiste-nom {
+  font-family: 'Abeezee';
+  font-size: '15px'
+}
+
+.concert-date-heure  {
+  font-family: 'Abeezee';
+  font-size: 12px;
+}
+
+.list-group-item {
+  background-image: url('');
+}
+
+/* Ajoutez ces styles dans votre fichier de style CSS */
+.list-group-item-with-shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.ticket {
+  height: 130px;
+  width: 100%;
+}
+
+.ticket button {
+  font-family: 'Poppins';
+  border-style: none;
+  font-size: 10px;
+}
+
+.ticket-title {
+  font-family: 'Poppins';
+  font-size: 15px;
+}
+
+.ticket-date {
+  font-family: 'Poppins';
+  font-size: 12px;
+}
+
+.ticket-baseline {
+  font-family: 'Poppins';
+  font-size: 11px;
+}
+
+.ticket-artist {
+  font-family: 'Poppins';
+  font-size: 12px;
+}
+
+
+Container#home {
+  .custom-shaped-div {
+    width: 200px;
+    height: 200px;
+    background-color: black;
+    clip-path: polygon(50% 80%, 100% 50%, 50% 100%, 32% 71%); /* Modifiez les coordonnées pour créer une forme personnalisée */
+  }
+} 
+
+#footer-container span {
+  font-size: 12px;
+}
+
+
+@keyframes updown {
+  0% {
+    transform: translateY(-20px)
+  }
+  50% {
+    transform: translateY(20px);
+  } 
+  100% {
+    transform: translateY(-20px);
+  }
+}
+
+.text-rotate > .wrap {
+  border-right: 0.08em solid #666;
+  z-index: 3;
+}
+
+.toRotate {
+  color: #0A0901;
+  font-weight: 300;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.custom-width-btn {
+  width: 50px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
