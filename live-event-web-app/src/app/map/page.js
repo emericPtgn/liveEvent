@@ -4,8 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import MenuNavigation from '../../components/navbar.js';
-import MapFestival from '../../components/geolocalisation.js';
-import TestMapFestival from '../../components/testMarkers.js';
+import MapFestival from '../../components/map.js';
 
 const MapPage = () => {
 
@@ -15,8 +14,7 @@ const MapPage = () => {
       <Row>
         <Col>
           <MenuNavigation />
-          {/* <MapFestival /> */}
-          <TestMapFestival />
+          <MapFestival />
         </Col>
       </Row>
     </Container>
