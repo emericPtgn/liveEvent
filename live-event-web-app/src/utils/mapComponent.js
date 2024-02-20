@@ -18,14 +18,22 @@ export default function FestiMap() {
 
 const Markers = () => {
   const { state } = useAppContext();
+  const [selectedMarker, setSelectedMarker] = useState(null);
+
   const markersToDisplay = state.markers.map((marker) => ({
     activ: marker.activ,
     libelle: marker.libelle,
     lat: marker.lat,
     lng: marker.lng,
-    pinIcon: marker.pinIcon
+    pinIcon: marker.pinIcon,
+    type: marker.type,
+    description: marker.description,
+    more_info: marker.more_info,
   }));
-  const [selectedMarker, setSelectedMarker] = useState(null);
+
+  console.log("Composant Markers - state.markers :", state.markers);
+
+
 
   return (
     <>
@@ -53,14 +61,30 @@ const Markers = () => {
           </AdvancedMarker>
         ) : null
       ))}
-      {selectedMarker && (
-        <InfoWindow
-          position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
-          onCloseClick={() => setSelectedMarker(null)}
-        >
-          <span>{selectedMarker.libelle}</span>
-        </InfoWindow>
-      )}
+{selectedMarker && (
+  <InfoWindow
+    position={{ lat: selectedMarker.lat, lng: selectedMarker.lng }}
+    onCloseClick={() => setSelectedMarker(null)}
+  >
+    <p style={{ fontWeight: 700 }}>{selectedMarker.type} {selectedMarker.libelle}</p>
+    {selectedMarker.type === 'scene' && selectedMarker.description && (
+      selectedMarker.description.map((concert, index) => (
+        <div key={index}> 
+          <p>{concert.artiste}</p> 
+          <p>{concert.date} à {concert.heure}</p> 
+        </div>
+      ))
+    )}
+        {selectedMarker.type === 'food' && selectedMarker.more_info && (
+        <div> 
+          <p style={{width: '150px'}}> {selectedMarker.more_info} </p>
+        </div>
+        )}
+  </InfoWindow>
+)}
+
+
+
     </>
   );
 };

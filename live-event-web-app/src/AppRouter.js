@@ -1,6 +1,6 @@
 // AppRouter.js
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import HomePage from './app/home/page.js'
 import TicketPage from './app/billeterie/page.js'
 import ProgrammationPage from './app/programmation/page.js'
@@ -10,17 +10,15 @@ import MapPage from './app/map/page.js';
 
 const AppRouter = () => {
     return (
-        <Router>
-            <Routes>
-                <Route path='/' element={<HomePage />} />
-                <Route path='/programmation' element={<ProgrammationPage />} />
-                <Route path='/billeterie' element={<TicketPage />} />
-                <Route path='/map' element={<MapPage />} />
-                <Route path='/about' element={<AboutPage />} />
-                <Route path='/contact' element={<ContactPage />} />
-            </Routes>
-        </Router>
-    )
+        <Routes>
+            <Route path='/' element={<HomePage />} />
+            <Route path='/programmation' element={<ProgrammationPage />} />
+            <Route path='/billeterie' element={<TicketPage />} />
+            <Route path='/map' element={<MapPage />} />
+            <Route path='/about' element={<AboutPage />} />
+            <Route path='/contact' element={<ContactPage />} />
+        </Routes>
+    );
 }
 
 export default AppRouter;

@@ -6,25 +6,38 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import Cookies from 'js-cookie';
 
 
-export default function CartAccess () {
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
-
+export default function CartAccess() {
+    const { state, dispatch } = useAppContext();
+  
+    const handleClose = () => {
+      dispatch({ type: 'closeCart', payload: { show: false } });
+    };
+  
+    const handleShow = () => {
+      dispatch({ type: 'showCart', payload: { show: true } });
+    };
+  
     return (
-        <>
-        <img style={{width: '25px'}} src={require('../images/icons/shopping-cart.png')} onClick={handleShow} alt='cart-icon'/>
-        <Offcanvas show={show} onHide={handleClose}>
-            <Offcanvas.Header closeButton>
-                <Offcanvas.Title>Panier</Offcanvas.Title>
-            </Offcanvas.Header>
-            <Offcanvas.Body>
-                <Cart/>
-            </Offcanvas.Body>
+      <>
+        <img
+          style={{ width: '20px' }}
+          src={require('../images/icons/shopping-cart.png')}
+          onClick={handleShow}
+          alt='cart-icon'
+        />
+        <Offcanvas show={state.cartToggle} onHide={handleClose}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Panier</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <Cart />
+          </Offcanvas.Body>
         </Offcanvas>
-        </>
-    )
-}
+      </>
+    );
+  }
+  
+  
 
 function Cart() {
     const { state } = useAppContext();

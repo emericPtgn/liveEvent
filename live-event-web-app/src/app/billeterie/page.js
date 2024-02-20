@@ -9,7 +9,7 @@ import TicketsCatalog from '../billeterie/ticketCatalog.js';
 
 const TicketPage = () => {
   return (
-    <Container fluid>
+    <Container fluid style={{backgroundColor: '#FFFDF7'}}>
       <Row>
         <Col>
           <TopBar />

@@ -1,20 +1,23 @@
 // `app/map/page.js` is the UI for the `/dashboard` URL
-import '../../App.scss'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import MenuNavigation from '../../components/navbar.js';
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
 import MapFestival from '../../components/map.js';
+import { TopBar } from '../../components/topbar.js';
+import '../../App.scss';
 
 const MapPage = () => {
 
 
   return (
-    <Container fluid>
+    <Container fluid style={{backgroundColor: '#FFFDF7'}}>
       <Row>
         <Col>
-          <MenuNavigation />
-          <MapFestival />
+          <TopBar />
+        </Col>
+      </Row>
+      <Row className='mt-5'>
+        <Col>
+        <MapFestival />
         </Col>
       </Row>
     </Container>

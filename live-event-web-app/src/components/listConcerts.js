@@ -29,7 +29,7 @@ export default function ListeConcerts() {
       <Row>
         <Col>
           <div>
-            <ul className="list-group d-flex flex-column align-items-center gap-5 my-5">
+            <ul className="list-group d-flex flex-column align-items-center gap-5 my-2">
               {state.programmation.map((concert, i) => (
                 <li key={i} className="list-group-item list-group-item-with-shadow position-relative" style={{ width: '330px', height: '400px', backgroundColor: 'rgba(132, 247, 126, 0.15)', borderTopStyle:'solid', borderColor: 'black', borderWidth: 1 }}>
                   <div>

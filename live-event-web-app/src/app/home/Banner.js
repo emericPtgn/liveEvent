@@ -1,28 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Container, Row, Col } from "react-bootstrap"
 import { ArrowRightCircle } from "react-bootstrap-icons"
 import { useNavigate } from 'react-router-dom';
 
-
-
 export const Banner = () => {
     const [loopNum, setLoopNum] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
-    const toRotate = [ "LOVE ", "PASSION ", "JOY ", "FREEDOM ", "MUSIC "];
     const [text, setText] = useState('');
     const [delta, setDelta] = useState(300 - Math.random() * 100)
     const period = 2000;
-    
+
+    const toRotate = useMemo(() => ["LOVE ", "PASSION ", "JOY ", "FREEDOM ", "MUSIC "], []);
 
     useEffect(() => {
       let ticker = setInterval(() => {
         tick();
       }, delta);
-    
-      return () => {clearInterval(ticker)}
-    }, [text])
-    
-    const tick = () => {
+
+      const tick = () => {
         let i = loopNum % toRotate.length;
         let fullText = toRotate[i];
         let updatedText = isDeleting ? fullText.substring(0, text.length - 1) : fullText.substring(0, text.length + 1)
@@ -41,10 +36,12 @@ export const Banner = () => {
             setLoopNum(loopNum + 1)
             setDelta(500)
         }
+      }
+    
+      return () => {clearInterval(ticker)}
+    }, [text, delta, isDeleting, loopNum, toRotate])
 
-        }
-
-        const navigate = useNavigate();
+    const navigate = useNavigate();
 
     return (
         <section className="banner mb-xl-5" >
@@ -55,8 +52,8 @@ export const Banner = () => {
                             <span className="tagline ps-0">FEEL THE SOUND</span>
                             <h1 className='toRotate'>{toRotate}<span className="wrap">{text}</span></h1>
                             <div id='btn-home-bloc1-container'>
-                            <button style={{ fontFamily: 'Poppins', color: 'black', fontWeight: 300, fontSize: 14 }} onClick={() => navigate('/programmation')} >Amazing lineup <ArrowRightCircle size={25} /></button>
-                            <button style={{ fontFamily: 'Poppins', color: 'black', fontWeight: 300, fontSize: 14 }} onClick={() => navigate('/billeterie')} > Get your Ticket! <ArrowRightCircle size={25} /> </button>
+                                <button style={{ fontFamily: 'Poppins', color: 'black', fontWeight: 300, fontSize: 14 }} onClick={() => navigate('/programmation')} >Amazing lineup <ArrowRightCircle size={25} /></button>
+                                <button style={{ fontFamily: 'Poppins', color: 'black', fontWeight: 300, fontSize: 14 }} onClick={() => navigate('/billeterie')} > Get your Ticket! <ArrowRightCircle size={25} /> </button>
                             </div>
                         </div>
                     </Col>

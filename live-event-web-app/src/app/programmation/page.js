@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { TopBar } from '../../components/topbar.js';
+import HeaderPage from './headerPage.js';
 import ListeConcerts from '../../components/listConcerts.js';
 import { Footer } from '../../components/footer';
 
@@ -12,11 +13,7 @@ const Page = () => {
       <Row>
         <Col>
           <TopBar />
-          <br />
-          <div className='intro-homepage text-center mt-4'>
-          <h1>PROGRAMMATION 2024</h1>
-          </div>
-          {/* <Image src="/images/homepage-main-image.jpg" fluid /> */}
+          <HeaderPage />
           <Filtre />
           <ListeConcerts />
           <Footer />
