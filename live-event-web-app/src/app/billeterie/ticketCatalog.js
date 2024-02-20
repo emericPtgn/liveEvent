@@ -59,6 +59,7 @@ const Ticket = ({handleAccordionToggle, onClick, openAccordion, index, ticket}) 
                         } else if (ticket.date_start === '13-07' && ticket.date_end === '15-07') {
                           return <span className="ticket-artist" key={concert.id}>{concert.artiste_nom} </span>
                         }
+                        return null
                       })}
                     </div>
 
@@ -100,7 +101,7 @@ const Accordion = ({handleAccordionToggle, openAccordion, index, ticket}) => {
               );
             } else if (ticket.date_start === '13-07' && ticket.date_end === '15-07') {
               return <span key={concert.id}>{concert.artiste_nom}</span>
-            }
+            } return null
           })}</span>
 
             </div>

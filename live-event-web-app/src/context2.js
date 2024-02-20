@@ -28,6 +28,7 @@ const initialState = {
   mapFilters: [],
   activMapFilters: [],
   dataLoaded: false,
+  cartToggle: false,
 };
 
 
@@ -74,35 +75,92 @@ function reducer(state, action) {
   }
 
   case 'loadMapFromApi': {
-    const markersFromApi = action.payload.markers.map(marker => ({
+    const markersFromApi = action.payload.markers.map((marker) => ({
       activ: marker.acf.activ,
       libelle: marker.acf.libelle,
       type: marker.acf.type,
       lat: marker.acf.google_map_marker.lat,
-      lng: marker.acf.google_map_marker.lng
+      lng: marker.acf.google_map_marker.lng,
+      description: marker.acf.description,
+      more_info: marker.acf.more_info,
+    }));
+  
+    const concertsDataToFillMarkersWith = state.programmation.map((concert) => ({
+      artiste: concert.artiste_nom,
+      date: concert.date,
+      heure: concert.heure_concert,
+      scene: concert.scene_du_concert,
+    }));
+  
+    const resultats = {};
+    markersFromApi.forEach((marker) => {
+      const libelleMarker = marker.libelle;
+      resultats[libelleMarker] = [];
+      const concertsCorrespondants = concertsDataToFillMarkersWith.filter(
+        (concert) => concert.scene === libelleMarker
+      );
+      resultats[libelleMarker] = concertsCorrespondants;
+      console.log(resultats[libelleMarker]);
+    });
+  
+    // Fonction pour vérifier si l'heure courante est dans l'intervalle du concert
+    function estDansIntervalle(heureConcert) {
+      const maintenant = new Date();
+      console.log(maintenant)
+      const debutConcert = new Date(maintenant);
+      console.log(debutConcert)
+      debutConcert.setHours(parseInt(heureConcert.split(':')[0], 10));
+      debutConcert.setMinutes(parseInt(heureConcert.split(':')[1], 10));
+      console.log(debutConcert)
+
+      const finConcert = new Date(debutConcert);
+      finConcert.setHours(finConcert.getHours() + 1);
+      console.log(finConcert)
+      return maintenant >= debutConcert && maintenant <= finConcert;
+    }
+  
+    const markersToDisplay = markersFromApi.map((marker) => {
+      if (marker.type === 'scene') {
+        const libelleMarker = marker.libelle;
+        const concertsCorrespondants = resultats[libelleMarker];
+        const concertEnCours = concertsCorrespondants.some((concert) =>
+          estDansIntervalle(concert.heure)
+        );
+  
+        return {
+          ...marker,
+          description: concertsCorrespondants,
+          concertEnCours: concertEnCours,
+          pinIcon: '🎸',
+        };
+      } else if (marker.type === 'food') {
+        return { ...marker, pinIcon: '🍔' };
+      } else if (marker.type === 'boisson') {
+        return { ...marker, pinIcon: '🍺' };
+      } else if (marker.type === 'activity') {
+        return { ...marker, pinIcon: '🛝' };
+      } else {
+        return null;
       }
-    )
-    );
-
-    const addPinsToMarkers = markersFromApi.map((marker) => 
-    marker.type === 'scene' ? {...marker, pinIcon: '🎸'} : 
-    marker.type === 'food' ? {...marker, pinIcon: '🍔'} : 
-    marker.type === 'boisson' ? {...marker, pinIcon : '🍺'} :
-    marker.type === 'activity' ? {...marker, pinIcon : '🛝'} : 
-    null)
-    
-    const rawFilters = [...new Set(markersFromApi.map(prop => prop.type))];
-    const properFilters = rawFilters.map((filter, index)=>({id: index, type: filter, activ: true}))
-
+    });
+  
+    const rawFilters = [...new Set(markersFromApi.map((prop) => prop.type))];
+    const setUpFilters = rawFilters.map((filter, index) => ({
+      id: index,
+      type: filter,
+      activ: true,
+    }));
+    const newFilter = { id: 4, type: 'concerts (en cours)', activ: false };
+    const filtersToDisplay = [...setUpFilters, newFilter];
+  
     return {
       ...state,
-      mapFilters : properFilters,
-      activMapFilters : properFilters,
-      markers: addPinsToMarkers,
-
+      mapFilters: filtersToDisplay,
+      activMapFilters: filtersToDisplay,
+      markers: markersToDisplay,
     };
   }
-
+  
   case 'loadTicketsFromApi': {
     const rawTickets = action.payload.tickets;
     const extractAcfFromRawTickets = rawTickets.map((ticket) => ticket.acf);
@@ -203,15 +261,15 @@ function reducer(state, action) {
     }
 }
 
-case 'handleDeletedItemFromCart': {
-  const updatedCartContent = state.cartContent.filter(product => product.id !== action.payload.id)
-  Cookies.set('cartContent', JSON.stringify(updatedCartContent))
+  case 'handleDeletedItemFromCart': {
+    const updatedCartContent = state.cartContent.filter(product => product.id !== action.payload.id)
+    Cookies.set('cartContent', JSON.stringify(updatedCartContent))
 
-  return {
-    ...state,
-    cartContent : updatedCartContent
+    return {
+      ...state,
+      cartContent : updatedCartContent
+    }
   }
-}
   
   case 'updateProgrammationFromFilter': {
     const selectedFiltre = action.payload.choosenDate;
@@ -240,24 +298,92 @@ case 'handleDeletedItemFromCart': {
 
   case 'UPDATE_Markers': {
     const { filterId, activ, filterType } = action.payload;
+    console.log(filterId, activ, filterType);
   
     const updatedFilters = state.mapFilters.map((filter) =>
       filter.id === filterId ? { ...filter, activ } : filter
     );
   
-    const updatedMapFilters = updatedFilters.filter((filter) => filter.activ).map((filter) => filter.type);
+    if (filterId === 4) {
+      if (activ) {
+        // Filtrer les scènes pour lesquelles un concert est en cours
+        const scenesAvecConcertEnCours = state.markers
+          .filter((marker) => marker.type === 'scene' && marker.concertEnCours)
+          .map((scene) => scene.libelle);
   
-    const updatedMarkers = state.markers.map((marker) =>
-      marker.type === filterType ? { ...marker, activ: activ } : marker
-    );
-    
-    console.log(activ)
+        console.log('Scènes avec concert en cours:', scenesAvecConcertEnCours);
+  
+        const updatedMarkers = state.markers.map((marker) => {
+          if (marker.type === 'scene') {
+            const markerActiv = scenesAvecConcertEnCours.includes(marker.libelle);
+            console.log(`Marqueur ${marker.libelle} activé : ${markerActiv}`);
+            return { ...marker, activ: markerActiv };
+          } else {
+            return marker;
+          }
+        });
+  
+        console.log('Marqueurs mis à jour :', updatedMarkers);
+  
+        return {
+          ...state,
+          mapFilters: updatedFilters,
+          markers: updatedMarkers,
+        };
+      } else {
+        // Si le filtre "concert en cours" est désactivé, réactivez tous les marqueurs de type "scene"
+        const updatedMarkers = state.markers.map((marker) => {
+          if (marker.type === 'scene') {
+            console.log(`Marqueur ${marker.libelle} activé : true`);
+            return { ...marker, activ: true };
+          } else {
+            return marker;
+          }
+        });
+  
+        console.log('Marqueurs mis à jour :', updatedMarkers);
+  
+        return {
+          ...state,
+          mapFilters: updatedFilters,
+          markers: updatedMarkers,
+        };
+      }
+    } else {
+      console.log('Filtre ' + activ);
+  
+      const updatedMarkers = state.markers.map((marker) =>
+        marker.type === filterType ? { ...marker, activ } : marker
+      );
+  
+      console.log('Marqueurs mis à jour :', updatedMarkers);
+  
+      return {
+        ...state,
+        mapFilters: updatedFilters,
+        markers: updatedMarkers,
+      };
+    }
+  }
+
+  case 'closeCart': {
+    let showBool
+    showBool = action.payload.show
+    console.log(showBool)
     return {
       ...state,
-      mapFilters: updatedFilters,
-      activMapFilters: updatedMapFilters,
-      markers: updatedMarkers,
-    };
+      cartToggle: showBool
+    }
+  }
+
+  case 'showCart': {
+    let showBool
+    showBool = action.payload.show
+    console.log(showBool)
+    return {
+      ...state,
+      cartToggle: showBool
+    }
   }
   
     default:

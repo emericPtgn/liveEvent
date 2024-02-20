@@ -1,6 +1,9 @@
+import React from 'react';
 import { Container, Col, Row, Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';  // Importer Link depuis react-router-dom
 import logo from '.././images/logo.svg';
 import MenuNavigation from './navbar';
+import { useAppContext } from '../context2'; ;
 
 export const TopBar = () => {
   return (
@@ -21,30 +24,35 @@ export const TopBar = () => {
 };
 
 const NavBar = () => {
+  const { dispatch } = useAppContext();
+
+  const handleCartClick = () => {
+    // Appeler la fonction pour afficher le panier
+    dispatch({ type: 'showCart', payload: { show: true } });
+  };
   return (
     <Navbar bg="none" expand="lg">
       <Container>
-        <Navbar.Brand href="#">
+        <Navbar.Brand as={Link} to="#">
           <img src={logo} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarSupportedContent" />
         <Navbar.Collapse id="navbarSupportedContent">
-          <Nav className="me-auto" style={{textAlign:'center'}}>
-            <Nav.Link href="http://localhost:3000">Accueil</Nav.Link>
-            <Nav.Link href="http://localhost:3000/programmation">Programmation</Nav.Link>
-            <Nav.Link href="http://localhost:3000/billeterie">Billeterie</Nav.Link>
-            <Nav.Link href="http://localhost:3000/map">Carte</Nav.Link>
-            <Nav.Link href="">Panier</Nav.Link>
+          <Nav className="me-auto" style={{ textAlign: 'center' }}>
+            <Nav.Link as={Link} to="/">Accueil</Nav.Link>
+            <Nav.Link as={Link} to="/programmation">Programmation</Nav.Link>
+            <Nav.Link as={Link} to="/billeterie">Billeterie</Nav.Link>
+            <Nav.Link as={Link} to="/map">Carte</Nav.Link>
+            <Nav.Link as={Link} to="" onClick={handleCartClick}>Panier</Nav.Link>
             <NavDropdown title="Infos pratiques" id="navbarDropdown">
               <NavDropdown.Item href="#">Action</NavDropdown.Item>
               <NavDropdown.Item href="#">Another action</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="#">Something else here</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link disabled href="#" tabindex="-1" aria-disabled="true">Disabled</Nav.Link>
+            <Nav.Link disabled href="#" tabIndex="-1" aria-disabled="true">Disabled</Nav.Link>
           </Nav>
         </Navbar.Collapse>
-
       </Container>
     </Navbar>
   );

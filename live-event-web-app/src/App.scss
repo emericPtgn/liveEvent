@@ -7,10 +7,17 @@ h1, h2, h3, h4, h5, h6 {
   font-family: 'AbeeZee';
 }
 
+
 .main-title {
   font-family: 'AbeeZee';
   font-size: 24px;
   color: #0A0901;
+}
+
+.title-header {
+  font-family: 'Poppins';
+  font-weight: 600;
+  letter-spacing: 0.8px;
 }
 
 .emphase-title {
@@ -105,7 +112,6 @@ $indigo-900: shade-color($indigo, 80%) !default;
   margin-top: 0;
   padding: 50px 0;
   height: 500px;
-  background-image: url('');
   background-position : top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -124,7 +130,6 @@ $indigo-900: shade-color($indigo, 80%) !default;
 }
 
 .banner h1  {
-  font-size: 65px;
   font-weight: 700;
   letter-spacing: 0.8px;
   line-height:  1;
@@ -213,10 +218,6 @@ $indigo-900: shade-color($indigo, 80%) !default;
   font-size: 12px;
 }
 
-.list-group-item {
-  background-image: url('');
-}
-
 /* Ajoutez ces styles dans votre fichier de style CSS */
 .list-group-item-with-shadow {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -253,6 +254,14 @@ $indigo-900: shade-color($indigo, 80%) !default;
   font-size: 12px;
 }
 
+/* styles pour la case cochée */
+.my-custom-checkbox .form-check-input:checked {
+  background-color: #dfba16;
+  border-color: #dfba16; /* Changez la couleur selon vos besoins */
+  /* autres styles */
+}
+
+input[type=checkbox]{accent-color:#fff;}
 
 Container#home {
   .custom-shaped-div {

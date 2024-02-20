@@ -19,7 +19,7 @@ const ExtraitProgrammation = () => {
                         }}>
                         <h1 className='text-center my-0 px-4'>LINEUP 2024 </h1>
                     </div>
-                    <img src={bannerProgrammation} alt='programmationBanner' className='w-100'/>
+                    <img src={bannerProgrammation} alt='programmationBanner' className='w-50'/>
                     <button className='btn-primary'>LA PROGRAMMATION</button>
                 </Col>
                 <Col>

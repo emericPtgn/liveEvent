@@ -1,18 +1,21 @@
 import React from "react";
 import '../App.scss'
 import Navbar from 'react-bootstrap/Navbar';
+import { Link } from 'react-router-dom';  // Importer Link depuis react-router-dom
 import CartAccess from "./cart";
 
 const MenuNavigation = () => {
   return (
-    <div>
-      <Navbar className='d-flex justify-content-end'>
-        <Navbar.Brand href="http://localhost:3000/" >accueil</Navbar.Brand>
-        <Navbar.Brand href="http://localhost:3000/programmation" >lineup</Navbar.Brand>
-        <Navbar.Brand href="http://localhost:3000/billeterie" >billeterie</Navbar.Brand>
-        <Navbar.Brand href="http://localhost:3000/map" >map</Navbar.Brand>
-        <CartAccess />
+    <div className="position-relative">
+      <Navbar className='d-flex justify-content-end me-5'>
+        <Navbar.Brand as={Link} to="/">accueil</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/programmation">lineup</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/billeterie">billeterie</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/map">map</Navbar.Brand>
       </Navbar>
+      <div style={{position: 'absolute', top: -10, right: -10}}>
+          <CartAccess />
+      </div>
     </div>
   );
 };
