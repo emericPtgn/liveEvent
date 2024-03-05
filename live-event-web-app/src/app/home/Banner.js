@@ -44,7 +44,7 @@ export const Banner = () => {
     const navigate = useNavigate();
 
     return (
-        <section className="banner mb-xl-5" >
+        <section className="banner" >
             <Container id='home'>
                 <Row className='mt-xl-5'>
                     <Col xs={12} md={8} xl={6}>
@@ -52,14 +52,14 @@ export const Banner = () => {
                             <span className="tagline ps-0">FEEL THE SOUND</span>
                             <h1 className='toRotate'>{toRotate}<span className="wrap">{text}</span></h1>
                             <div id='btn-home-bloc1-container'>
-                                <button style={{ fontFamily: 'Poppins', color: 'black', fontWeight: 300, fontSize: 14 }} onClick={() => navigate('/programmation')} >Amazing lineup <ArrowRightCircle size={25} /></button>
-                                <button style={{ fontFamily: 'Poppins', color: 'black', fontWeight: 300, fontSize: 14 }} onClick={() => navigate('/billeterie')} > Get your Ticket! <ArrowRightCircle size={25} /> </button>
+                                <button onClick={() => navigate('/programmation')} >Amazing lineup <ArrowRightCircle size={25} /></button>
+                                <button onClick={() => navigate('/billeterie')} > Get your Ticket! <ArrowRightCircle size={25} /> </button>
                             </div>
                         </div>
                     </Col>
                     <Col xs={12} xl={6} className='d-none d-xl-block'>
-                        <svg style={{position:'relative'}} className='svg-anim' width="600px" height="600px" viewBox="0 0 110.514 110.514" xmlns="http://www.w3.org/2000/svg">
-                            <g style={{position:'aboslute', top: 0}} id="Group_1126" data-name="Group 1126" transform="translate(-2153.771 -14295.673)">
+                        <svg className='svg-anim' viewBox="0 0 110.514 110.514" xmlns="http://www.w3.org/2000/svg">
+                            <g className='g-anim' id="Group_1126" data-name="Group 1126" transform="translate(-2153.771 -14295.673)">
                                 <path id="Path_845" data-name="Path 845" d="M-3001.9,2475.261l.754-14.572-6.043-2.158-21.478-3.668,2.807,15.648,2.483,8.6,5.612,2.41,1.833,3.023,6.908,6.15h13.708l3.128-1.725-9.712-13.708" transform="translate(5186 11845)" fill="#e5e5e3" fill-rule="evenodd"/>
                                 <path id="Path_846" data-name="Path 846" d="M-2951.9,2475.261l-.756-14.572,6.044-2.158,21.476-3.668-2.8,15.648-2.483,8.6-5.612,2.41-1.835,3.023-6.907,6.15h-13.706l-3.131-1.725,9.714-13.708" transform="translate(5186 11845)" fill="#e5e5e3" fill-rule="evenodd"/>
                                 <path id="Path_847" data-name="Path 847" d="M-2952.689,2462.141l-7.654-6.1-7.424-.577-9.348,4.463-1.841-1.275-6.8-3.188-6.367.361-8.358,4.887-2.478,7.784.712,7.508,7.924,11.684,7.511,8.209,10.338,6.867,5.519-4.533,13.383-11.824,6.586-15.3-1.7-8.967" transform="translate(5186 11845)" fill="#ef204d" fill-rule="evenodd"/>

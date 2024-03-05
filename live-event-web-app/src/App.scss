@@ -20,12 +20,6 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.8px;
 }
 
-.emphase-title {
-  font-family: 'Poppins';
-  font-size: 1em;
-  font-weight: 700;
-  background-color: #f0ca0fa8 ;
-}
 
 $theme-colors: (
   'text': #0A0901,
@@ -154,10 +148,11 @@ $indigo-900: shade-color($indigo, 80%) !default;
 }
 
 .banner button {
+  font-family: 'Poppins';
   background-color: #F0CA0F;
-  color: #fff;
-  font-weight: 700;
-  font-size: 20px;
+  color: black;
+  font-weight: 300;
+  font-size: 14px;
   letter-spacing: 0.8px;
   display: flex;
   align-items: center;
@@ -178,9 +173,59 @@ $indigo-900: shade-color($indigo, 80%) !default;
 }
 
 .banner svg.svg-anim  {
+  position: relative;
+  width: 600px;
+  height: 600px;
   animation: updown 3s linear infinite
 }
 
+.banner .g-anim {
+  position: absolute;
+  top: 0;
+}
+
+.homepage-body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  padding : 100px 0;
+  border-top-style: solid;
+  border-top-width: 1;
+  border-top-color: #0A0901;
+}
+
+.homepage-body-container h2 span {
+  font-family: 'Poppins';
+  font-weight: 700;
+}
+.homepage-body-container h3 {
+  margin-top: 60px;
+  font-family: 'Poppins';
+  font-weight: 300;
+}
+
+.homepage-body-container-header {
+  display: flex;
+  border: 3;
+  border-color: black;
+  border-style: solid;
+  border-radius: 50px;
+  max-width: fit-content;
+  position: absolute;
+  top: -30px;
+  background-color: #FFFDF7;
+
+}
+
+.homepage-body-container-header h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0 20px;
+}
+  
 #Path_847:hover {
   fill: #2a9d8f;
 }
@@ -199,14 +244,111 @@ $indigo-900: shade-color($indigo, 80%) !default;
 
 /* styles.scss */
 
-.intro-homepage {
-  h1 {
-    color: transparent; /* Texte sans couleur */
-    -webkit-text-stroke: 2px black; /* Bordure noire */
-    text-stroke: 2px black; /* Bordure noire */
-    display: inline-block; /* Pour éviter que le texte ne s'étende à 100% de la largeur */
-  }
+h1 {
+  color: transparent; /* Texte sans couleur */
+  -webkit-text-stroke: 2px black; /* Bordure noire */
+  text-stroke: 2px black; /* Bordure noire */
+  display: inline-block; /* Pour éviter que le texte ne s'étende à 100% de la largeur */
 }
+
+
+.container-filtre-programmation {
+  display: flex;
+  margin: 50px 0;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.container-programmation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 40px;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  width: 330px;
+  height: 400px;
+  background-color: rgba(132, 247, 126, 0.15);
+  border-top: 1px solid rgba(123, 132, 132, 0.15);
+}
+
+li.list-group-item.custom-list-item {
+  border-top: 1px solid rgba(123, 132, 132, 0.15);
+}
+
+
+.list-group-item-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  row-gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.list-group-item-icon {
+    width: 45px;
+    position: absolute;
+    top: -25px;
+    right: -12px;
+  }
+
+.list-group-item-photo {
+  width: 280px;
+  height: 250px;
+  background-color: #FFFDF7;
+}
+
+.list-group-item-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.list-group-item-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-group-item-footer div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+  border-style: solid;
+  width: 45%;
+  border-color: rgba(123, 132, 132, 0.15);
+  border-width: 0.5px;
+  background-color: #FFF;
+}
+
+.bg-artiste-nom {
+  background-color: rgba(240, 202, 15, 1);
+}
+
+.container-artiste-nom {
+  width: fit-content;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgba(123, 132, 132, 0.15);
+  background-color: #FFF;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+  margin: 0 auto;
+}
+
 
 .concert-artiste-nom {
   font-family: 'Abeezee';
@@ -223,9 +365,73 @@ $indigo-900: shade-color($indigo, 80%) !default;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.container-catalog {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 800px;
+  margin: 0 auto;
+}
+
+.container-catalog-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+}
+
+.container-catalog-header span {
+    font-family: 'Poppins';
+    font-size: 1em;
+    font-weight: 700;
+    background-color: #f0ca0fa8 ;
+}
+
+.container-catalog-header h2 {
+  margin-top: 60px;
+  font-family: 'Poppins';
+  font-weight: 300;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 50px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.list-item {
+  width: 100%;
+  height: auto;
+  background-color: rgba(132, 247, 126, 0.15);
+  border-radius: 1%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(123, 132, 132, 0.15);
+}
+
 .ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
   height: 130px;
   width: 100%;
+}
+
+.ticket-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
 .ticket button {
@@ -234,9 +440,26 @@ $indigo-900: shade-color($indigo, 80%) !default;
   font-size: 10px;
 }
 
-.ticket-title {
+.ticket-price-date-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  width: 100%;
+  height: auto;
+}
+
+.ticket-price-date-container span:first-of-type {
+    font-family: 'Poppins';
+    font-size: 15px;
+}
+
+.ticket-price-date-container span:last-of-type {
   font-family: 'Poppins';
-  font-size: 15px;
+  font-size: 11px;
+}
+
+.ticket-programmation-container {
+  display: none;
 }
 
 .ticket-date {
@@ -244,14 +467,44 @@ $indigo-900: shade-color($indigo, 80%) !default;
   font-size: 12px;
 }
 
-.ticket-baseline {
-  font-family: 'Poppins';
-  font-size: 11px;
-}
-
 .ticket-artist {
   font-family: 'Poppins';
   font-size: 12px;
+}
+
+.ticket-icon {
+  width: 40px;
+  position: absolute;
+  top: -30px;
+  left: 20px;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+.accordion-item {
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 2px; /* Ajoutez une marge entre les éléments de l'accordéon */
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f8f9fa;
+}
+.accordion-body {
+  padding: 1rem;
+  border-top: 1px solid #dee2e6;
+  background-color: #fff;
+  display: block; /* Le corps est initialement masqué */
+}
+
+/* Style pour montrer le corps lorsqu'il est actif */
+.accordion-item.active .accordion-body {
+  display: block;
 }
 
 /* styles pour la case cochée */
@@ -261,7 +514,47 @@ $indigo-900: shade-color($indigo, 80%) !default;
   /* autres styles */
 }
 
-input[type=checkbox]{accent-color:#fff;}
+.container-carte {
+  background-color: #FFFDF7;
+}
+
+.container-filters-map {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  flex-wrap: wrap;
+  background-color: rgba(248, 248, 248, 0.54);
+  border-style: solid;
+  border-color: rgba(123, 132, 132, 0.15);
+  border-width: 0.5px;
+}
+
+.container-filtre-map {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(248, 248, 248, 0.354) ;
+  padding: 10px;
+}
+
+.advanced-marker {
+  width: 30px;
+  height: 30px;
+}
+
+.advanced-marker span {
+  cursor: pointer;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-window p {
+  font-weight: 700;
+}
 
 Container#home {
   .custom-shaped-div {
@@ -271,11 +564,27 @@ Container#home {
     clip-path: polygon(50% 80%, 100% 50%, 50% 100%, 32% 71%); /* Modifiez les coordonnées pour créer une forme personnalisée */
   }
 } 
+#footer-container {
+  margin-top: 40px;
+  padding: 50px 0;
+  border-top-style: solid;
+  border-top-color: #0A0901;
+  border-top-width: 1;
+}
 
 #footer-container span {
   font-size: 12px;
 }
 
+#footer-container .flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+#footer-container .flex-around img {
+  width: 20px;
+  height: 20px;
+}
 
 @keyframes updown {
   0% {
@@ -342,4 +651,37 @@ Container#home {
   }
 }
 
+@media screen and (min-width: 769px) {
 
+  .ticket-programmation-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+  .accordion {
+    display: none;
+  }
+
+  .container-catalog-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 65%;
+    margin-top: 50px;
+  }
+
+  .ticket-list {
+  width: 600px;
+}
+
+}
+
+
+@media screen  and (min-width: 1200px) {
+    .ticket-list {
+    width: 1000px;
+    } 
+}
