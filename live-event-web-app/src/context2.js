@@ -272,7 +272,7 @@ function reducer(state, action) {
   }
   
   case 'updateProgrammationFromFilter': {
-    const selectedFiltre = action.payload.choosenDate;
+    const selectedFiltre = action.payload.selectedFilter;
     const updatedProgrammation = (selectedFiltre === "All") ? 
       state.allProgrammation : 
       state.programmation.filter(item => {
