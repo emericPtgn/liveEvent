@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Col, Row, Navbar, Nav, NavDropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';  // Importer Link depuis react-router-dom
+import { Link } from 'react-router-dom'; 
 import logo from '.././images/logo.svg';
 import MenuNavigation from './navbar';
 import { useAppContext } from '../context2'; ;
@@ -8,12 +8,14 @@ import { useAppContext } from '../context2'; ;
 export const TopBar = () => {
   return (
     <Container>
-      <Row className="d-flex justify-content-between d-md-none" style={{ borderBottomStyle: 'solid', borderBottomWidth: 1, borderBottomColor: '0A0901' }}>
+      <Row className="d-flex justify-content-between d-md-none bt-border" >
         <NavBar />
       </Row>
-      <Row className="d-none d-md-flex align-items-center">
+      <Row className="d-none d-md-flex align-items-center bt-border pb-4">
         <Col md={4}>
-          <Logo />
+        <Navbar.Brand as={Link} to="/">
+          <img src={logo} alt="logo" />
+        </Navbar.Brand>
         </Col>
         <Col md={8} className="justify-content-center">
           <MenuNavigation />
@@ -27,13 +29,12 @@ const NavBar = () => {
   const { dispatch } = useAppContext();
 
   const handleCartClick = () => {
-    // Appeler la fonction pour afficher le panier
     dispatch({ type: 'showCart', payload: { show: true } });
   };
   return (
     <Navbar bg="none" expand="lg">
       <Container>
-        <Navbar.Brand as={Link} to="#">
+        <Navbar.Brand as={Link} to="/">
           <img src={logo} alt="logo" />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarSupportedContent" />
@@ -44,13 +45,11 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/billeterie">Billeterie</Nav.Link>
             <Nav.Link as={Link} to="/map">Carte</Nav.Link>
             <Nav.Link as={Link} to="" onClick={handleCartClick}>Panier</Nav.Link>
-            <NavDropdown title="Infos pratiques" id="navbarDropdown">
-              <NavDropdown.Item href="#">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#">Another action</NavDropdown.Item>
+            <NavDropdown title="Informations générales" id="navbarDropdown">
+              <NavDropdown.Item as={Link} to='/venir-au-festival' >Venir au festival</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#">Something else here</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to='/deviens-benevole' >Deviens bénévole</NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link disabled href="#" tabIndex="-1" aria-disabled="true">Disabled</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
@@ -58,12 +57,6 @@ const NavBar = () => {
   );
 };
 
-const Logo = () => {
-  return (
-    <>
-      <img src={logo} alt="logo-live-event" style={{ width: 230 }} />
-    </>
-  );
-};
+
 
 export default NavBar;

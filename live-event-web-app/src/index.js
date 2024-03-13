@@ -11,7 +11,9 @@ root.render(
   <StrictMode>
     <BrowserRouter>
       <AppProvider>
-        <App />
+        <div id='bg-color'>
+          <App />
+        </div>
       </AppProvider>
     </BrowserRouter>
   </StrictMode>

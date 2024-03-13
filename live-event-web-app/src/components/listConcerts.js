@@ -25,7 +25,8 @@ export default function ListeConcerts() {
         <Col>
           <ul className="list-group container-programmation">
             {state.programmation.map((concert, i) => (
-              <li key={i} className="list-group-item custom-list-item">
+              <li key={i} className="list-group-item custom-list-item artist-card-vector-bg">
+  
                 <img className="list-group-item-icon" alt="icone-ticket" src={require('../images/icons/vip.png')} />
                 <div className='list-group-item-layout'>
 

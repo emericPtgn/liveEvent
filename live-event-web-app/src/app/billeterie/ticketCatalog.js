@@ -11,7 +11,7 @@ export default function TicketCatalog() {
   const handleOnAddToCart = (ticketId, ticketPrice) => { dispatch({ type: 'addToCart', payload: { 'ticketId': ticketId, 'ticketPrice': ticketPrice } }) }
 
   return (
-    <Container fluid className='container-catalog'>
+    <Container className='container-catalog'>
       <ul className="ticket-list"> {state.tickets.map((ticket, index) => (
           <Ticket key={ticket.id} onClick={handleOnAddToCart} handleAccordionToggle={handleAccordionToggle} openAccordion={openAccordion} index={index} ticket={ticket} />
         ))}
@@ -26,7 +26,7 @@ const Ticket = ({ handleAccordionToggle, onClick, openAccordion, index, ticket }
   let displayLiveEvent = false;
 
   return (
-    <li key={index} className={`list-group-item list-item`}>
+    <li className={`list-group-item list-item`}>
       <div className='ticket'>
         <img src={require('../../images/icons/vip.png')} alt="icone ticket" className="ticket-icon" />
         <div className="ticket-price-date-container">
@@ -41,7 +41,7 @@ const Ticket = ({ handleAccordionToggle, onClick, openAccordion, index, ticket }
               return null
             }
             return (concert.date === ticket.date_start) &&
-              <span className="ticket-artist" key={concert.id}> {concert.artiste_nom} </span>
+              <span className="ticket-artist" key={concert.id} > {concert.artiste_nom} </span>
           })}
           {displayLiveEvent && <span className="ticket-artist">100% de la programmation LiveEvent !</span>}
         </div>
@@ -49,7 +49,7 @@ const Ticket = ({ handleAccordionToggle, onClick, openAccordion, index, ticket }
           <button onClick={() => onClick(ticket.id, ticket.ticket_price)} className="btn-primary" type="button">Ajouter au panier</button>
         </div>
       </div>
-      <Accordion isOpen={isAccordionOpen} handleAccordionToggle={() => handleAccordionToggle(index)} ticket={ticket} />
+      <Accordion key={ticket.id} isOpen={isAccordionOpen} handleAccordionToggle={() => handleAccordionToggle(index)} ticket={ticket} />
     </li>
   )
 }
@@ -57,11 +57,11 @@ const Ticket = ({ handleAccordionToggle, onClick, openAccordion, index, ticket }
 const Accordion = ({ isOpen, handleAccordionToggle, ticket }) => {
   const { state } = useAppContext()
   return (
-    <div className={`accordion ${isOpen ? 'show' : ''}`}>
+    <div key={ticket.id} className={`accordion ${isOpen ? 'show' : ''}`}>
       <div className="accordion-item">
-        <h2 className="accordion-header">
+        <p className="accordion-header">
           <button className="accordion-button" type="button" onClick={handleAccordionToggle}>Voir la programmation</button>
-        </h2>
+        </p>
         <div className={`accordion-collapse collapse ${isOpen ? 'show' : ''}`}>
           <div className="accordion-body">
             {state.programmation.map((concert) => {

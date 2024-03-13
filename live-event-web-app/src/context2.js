@@ -7,7 +7,6 @@ const Context = createContext();
 const { Provider, Consumer } = Context;
 
 
-// Vérifier si les cookies existent et les initialiser avec une valeur par défaut si nécessaire
 const initialCartContent = JSON.parse(Cookies.get('cartContent') || '[]');
 const initialCartTotal = parseInt(Cookies.get('cartTotal') || '0');
 
@@ -29,6 +28,7 @@ const initialState = {
   activMapFilters: [],
   dataLoaded: false,
   cartToggle: false,
+  faq: []
 };
 
 
@@ -51,7 +51,8 @@ function reducer(state, action) {
           ...item,
           date: joursMajuscule[index], 
           heure_concert: formattedHour[index],
-          ariste_nom : '' ,
+          ariste_nom : '',
+          id: index
         };
       });
 
@@ -75,7 +76,7 @@ function reducer(state, action) {
   }
 
   case 'loadMapFromApi': {
-    const markersFromApi = action.payload.markers.map((marker) => ({
+    const markersFromApi = action.payload.markers.map((marker, index) => ({
       activ: marker.acf.activ,
       libelle: marker.acf.libelle,
       type: marker.acf.type,
@@ -83,7 +84,10 @@ function reducer(state, action) {
       lng: marker.acf.google_map_marker.lng,
       description: marker.acf.description,
       more_info: marker.acf.more_info,
+      id: index
     }));
+
+    console.log(markersFromApi)
   
     const concertsDataToFillMarkersWith = state.programmation.map((concert) => ({
       artiste: concert.artiste_nom,
@@ -96,26 +100,20 @@ function reducer(state, action) {
     markersFromApi.forEach((marker) => {
       const libelleMarker = marker.libelle;
       resultats[libelleMarker] = [];
-      const concertsCorrespondants = concertsDataToFillMarkersWith.filter(
-        (concert) => concert.scene === libelleMarker
-      );
+      const concertsCorrespondants = concertsDataToFillMarkersWith.filter((concert) => 
+      concert.scene === libelleMarker);
       resultats[libelleMarker] = concertsCorrespondants;
-      console.log(resultats[libelleMarker]);
     });
+
+    console.log(resultats)
   
-    // Fonction pour vérifier si l'heure courante est dans l'intervalle du concert
     function estDansIntervalle(heureConcert) {
       const maintenant = new Date();
-      console.log(maintenant)
       const debutConcert = new Date(maintenant);
-      console.log(debutConcert)
       debutConcert.setHours(parseInt(heureConcert.split(':')[0], 10));
       debutConcert.setMinutes(parseInt(heureConcert.split(':')[1], 10));
-      console.log(debutConcert)
-
       const finConcert = new Date(debutConcert);
       finConcert.setHours(finConcert.getHours() + 1);
-      console.log(finConcert)
       return maintenant >= debutConcert && maintenant <= finConcert;
     }
   
@@ -133,6 +131,7 @@ function reducer(state, action) {
           concertEnCours: concertEnCours,
           pinIcon: '🎸',
         };
+        
       } else if (marker.type === 'food') {
         return { ...marker, pinIcon: '🍔' };
       } else if (marker.type === 'boisson') {
@@ -143,7 +142,22 @@ function reducer(state, action) {
         return null;
       }
     });
-  
+
+ /*    markersToDisplay.forEach((marker) => {
+      if (marker.type === 'scene') {
+        const scenesArray = marker.description;
+        const chronologicConcertsArray = scenesArray.sort((concert1, concert2) => {
+          const dateConcert1 = new Date(`${concert1.date} ${concert1.heure}`);
+          const dateConcert2 = new Date(`${concert2.date} ${concert2.heure}`);
+          return dateConcert1 - dateConcert2;
+        });
+        marker.description = chronologicConcertsArray;
+      }
+    });
+
+    console.log(markersToDisplay) */
+    
+ 
     const rawFilters = [...new Set(markersFromApi.map((prop) => prop.type))];
     const setUpFilters = rawFilters.map((filter, index) => ({
       id: index,
@@ -166,9 +180,10 @@ function reducer(state, action) {
     const extractAcfFromRawTickets = rawTickets.map((ticket) => ticket.acf);
     const rawTicketsWithId = extractAcfFromRawTickets.map((object, index) => ({ ...object, id: index }));
   
-    const properTickets = rawTicketsWithId.map((ticket) => {
+    const properTickets = rawTicketsWithId.map((ticket, index) => {
       return {
         ...ticket,
+        id: index,
         date_start: moment(ticket.date_start, 'YYYYMMDD').format('DD-MM'),
         date_end: moment(ticket.date_end, 'YYYYMMDD').format('DD-MM'),
         ticket_price: ticket.ticket_price.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' })
@@ -180,6 +195,18 @@ function reducer(state, action) {
       ...state,
       tickets: properTickets
     };
+  }
+
+  case 'loadFAQfromApi': {
+    const rawFaqObject = action.payload.faq
+    const cleanObject = [rawFaqObject[0].acf]
+    const rawFaq = [cleanObject[0]];
+    const faq = Object.values(rawFaq[0]);
+
+    return {
+      ...state,
+      faq: faq
+    }
   }
 
   case 'addToCart': {

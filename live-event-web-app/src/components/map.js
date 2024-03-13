@@ -5,8 +5,7 @@ import Form from 'react-bootstrap/Form';
 
 export default function MapFestival() {
   return (
-    <div>
-        <h1>FestiMAP'</h1>
+    <div className="text-center container-carte">
         <Filters />
         <FestiMap />
     </div>
@@ -16,8 +15,10 @@ export default function MapFestival() {
 const Filters = () => {
   const { state, dispatch } = useAppContext();
   const filters = state.mapFilters;
-  const onFilterChange = (filterId, activ, filterType) => {dispatch({ type: 'UPDATE_Markers', payload: { filterId, activ, filterType } });};
-  const filtersToDisplay = filters.map((filter) => (<Filter key={filter.id} filter={filter} onFilterChange={onFilterChange} />));
+  const onFilterChange = (filterId, activ, filterType) => 
+  {dispatch({ type: 'UPDATE_Markers', payload: { filterId, activ, filterType } });};
+  const filtersToDisplay = filters.map((filter) => 
+  (<Filter key={filter.id} filter={filter} onFilterChange={onFilterChange} />));
 
   return (
     <div className='container-filters-map'>{filtersToDisplay}</div>
@@ -28,13 +29,10 @@ const Filters = () => {
 const Filter = ({ filter, onFilterChange }) => {
   return (
     <div className="container-filtre-map">
-
       <span className="me-3">{filter.type}</span>
-
       <Form.Check type="checkbox" checked={filter.activ} 
       onChange={(e) => onFilterChange(filter.id, e.target.checked, filter.type)} 
       className="my-custom-checkbox"/>
-
     </div>
   );
 };
