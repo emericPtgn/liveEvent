@@ -7,6 +7,8 @@ import ProgrammationPage from './app/programmation/page.js'
 import AboutPage from './app/about/page.js';
 import ContactPage from './app/contact/page.js';
 import MapPage from './app/map/page.js';
+import VenirAuFestival from "./app/infos/page.js";
+import DeviensBenevole from "./app/benevole/page.js";
 
 const AppRouter = () => {
     return (
@@ -17,6 +19,8 @@ const AppRouter = () => {
             <Route path='/map' element={<MapPage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/contact' element={<ContactPage />} />
+            <Route path='/venir-au-festival' element={<VenirAuFestival />} />
+            <Route path='/deviens-benevole' element={<DeviensBenevole />} />
         </Routes>
     );
 }

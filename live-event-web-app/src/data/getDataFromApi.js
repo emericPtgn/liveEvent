@@ -28,6 +28,7 @@ async function fetchDataForMap(dispatch){
         throw new Error("Erreur fetch shops")
       }
       const result = await response.json();
+      console.log(result)
       dispatch({type: 'loadMapFromApi', payload: {markers : result}})
     } catch (error) {
       console.log('erreur lors de la récupération des données ' + error)
@@ -54,23 +55,37 @@ async function fetchDataForTickets(dispatch){
   }
 }
 
+async function fetchDataForFAQ(dispatch){
+  try {
+    const url = 'https://testdwm.fr/wp-json/wp/v2/faq?_fields=acf'
+    const response = await fetch(url);
+    if (!response.ok){
+      throw new Error('Erreur fetch ticket')
+    }
+    const result = await response.json();
+    dispatch({type: 'loadFAQfromApi', payload :  {faq : result}})
+    
+  } catch (error) {
+    console.log('erreur lors de la récupération des données ' + error)
+  }
+  finally {
+    console.log('PROMISE SOLVED (FAQ)')
+  }
+}
 
 export default function DataLoader() {
   const { dispatch } = useAppContext();
 
   useEffect(() => {
-    fetchDataForProgrammation(dispatch);
+    const loadData = async () => {
+      await fetchDataForProgrammation(dispatch);
+      await fetchDataForMap(dispatch);
+      await fetchDataForTickets(dispatch);
+      await fetchDataForFAQ(dispatch);
+    };
+
+    loadData();
   }, [dispatch]);
 
-  useEffect(() => {
-    fetchDataForMap(dispatch);
-  }, [dispatch]);
-
-  useEffect(() => {
-    fetchDataForTickets(dispatch)
-  }, [dispatch])
-  
-
-  // Vous pouvez également renvoyer des éléments JSX pour afficher un message de chargement, si nécessaire
   return null;
 }

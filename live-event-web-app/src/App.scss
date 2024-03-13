@@ -1,7 +1,8 @@
-// Redéfinir les couleurs par défaut de Bootstrap
+
 
 @import url('https://fonts.googleapis.com/css?family=ABeeZee:700|Proza%20Libre:400');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'AbeeZee';
@@ -31,29 +32,24 @@ $theme-colors: (
   'light-grey': rgba(248, 248, 248, 0.354)
 );
 
-@font-face {
-  font-family: 'Proza';
+h1.title {
+  font-family: "Suez One", serif;
+  font-weight: 400;
   font-style: normal;
-  font-weight: 400;  /* Poids de la police régulière */
-  src: url('../public/fonts/Proza_Libre/ProzaLibre-Regular.ttf');
+  font-size: 40px;
 }
 
-@font-face {
-  font-family: 'Abeezee';
+h3.title {
+  font-family: "Suez One", serif;
+  font-weight: 400;
   font-style: normal;
-  font-weight: 700;  /* Poids de la police en gras */
-    src: url('../public/fonts/ABeeZee/ABeeZee-Regular.ttf');
+  font-size: 30px;
 }
 
-/* Ajoutez des règles @font-face pour d'autres variantes si nécessaire */
-
-/* Utilisez la police dans vos sélecteurs */
-body {
-  font-family: 'Open Sans', serif;
+.link-style-1 {
+  text-decoration: none;
+  color: black
 }
-
-/* Autres styles CSS/SCSS */
-
 
 
 // Importer Bootstrap
@@ -70,18 +66,19 @@ $indigo-700: shade-color($indigo, 40%) !default;
 $indigo-800: shade-color($indigo, 60%) !default;
 $indigo-900: shade-color($indigo, 80%) !default;
 
-// Utiliser les nuances d'indigo définies dans $indigo
-.my-indigo-element {
-  background-color: $indigo-700; // Utiliser la couleur indigo-500
-  color: $color-contrast-light; // Utiliser la couleur de texte de contraste définie dans Bootstrap
+
+.my-indigo-element-test {
+  background-color: $indigo-700; 
+  color: $color-contrast-light; 
 }
 
 .my-test-bg-color {
-  background-color: $white; // Utiliser la couleur définie comme "white" dans Bootstrap
+  background-color: $white; 
 }
 
 .home-page-bg-color {
-  background-image: url('./images/bg-star.svg');
+/*   background-color: #FFFDF7; */
+/*   background-image: url('./images/bg/bg-star.svg'); */
 }
 
 .navbar-expand {
@@ -100,6 +97,16 @@ $indigo-900: shade-color($indigo, 80%) !default;
 
 .heart-anim-from-banner {
   z-index: 0;
+}
+
+#bg-color {
+  background-color: #FFFDF7;
+}
+.bg-white {
+  background-color: whitesmoke;
+}
+.bt-border {
+  border-bottom: solid 1pt #7b848426;
 }
 
 .banner {
@@ -184,16 +191,24 @@ $indigo-900: shade-color($indigo, 80%) !default;
   top: 0;
 }
 
+.homepage-structure {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 70px;
+}
+
 .homepage-body-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
-  padding : 100px 0;
   border-top-style: solid;
-  border-top-width: 1;
-  border-top-color: #0A0901;
+  border-top-width: 0.5px;
+  border-top-color: rgba(62, 62, 62, 0.15);
+  padding: 80px 0;
 }
 
 .homepage-body-container h2 span {
@@ -201,9 +216,9 @@ $indigo-900: shade-color($indigo, 80%) !default;
   font-weight: 700;
 }
 .homepage-body-container h3 {
-  margin-top: 60px;
-  font-family: 'Poppins';
+  font-family: 'Suez One';
   font-weight: 300;
+  margin-bottom: 40px;
 }
 
 .homepage-body-container-header {
@@ -225,6 +240,53 @@ $indigo-900: shade-color($indigo, 80%) !default;
   margin-bottom: 0;
   padding: 0 20px;
 }
+
+.container-faq-group {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  background-color: #84f77e26;
+}
+
+.faq-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.bg-blob {
+  src: url(./images/bg/vagues-bg.svg);
+  background-size: cover;
+}
+
+.festimap-homepage-container {
+  width: 100%;
+  height: 500px;
+  z-index: 3;
+}
+
+.festimap-homepage-description-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.festimap-homepage-description-col > div {
+  background-color: rgba(132, 247, 126, 0.15);
+  padding: 30px;
+  width: fit-content;
+}
+
+.festimap-homepage-description-col > div > ul {
+  line-height: 40px;
+}
+
+.festimap-homepage-description-col > div > button {
+  width: fit-content;
+}
   
 #Path_847:hover {
   fill: #2a9d8f;
@@ -242,31 +304,35 @@ $indigo-900: shade-color($indigo, 80%) !default;
   border: none;
 }
 
-/* styles.scss */
 
-h1 {
-  color: transparent; /* Texte sans couleur */
-  -webkit-text-stroke: 2px black; /* Bordure noire */
-  text-stroke: 2px black; /* Bordure noire */
-  display: inline-block; /* Pour éviter que le texte ne s'étende à 100% de la largeur */
+h2.stylish {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 5px 20px;
 }
 
+.sous-titre {
+  width: 90%;
+}
 
 .container-filtre-programmation {
   display: flex;
-  margin: 50px 0;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   padding-bottom: 10px;
   padding-left: 50px;
   padding-right: 50px;
+  margin-bottom: 50px;
 }
 
 .container-programmation {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   row-gap: 40px;
+  column-gap: 20px;
   padding-left: 0;
   margin-bottom: 0;
 }
@@ -286,6 +352,9 @@ li.list-group-item.custom-list-item {
   border-top: 1px solid rgba(123, 132, 132, 0.15);
 }
 
+/* .artist-card-vector-bg {
+  background-image: url('./images/bg/Vector\ 228bg-card-artist-vector.svg');
+} */
 
 .list-group-item-layout {
   display: flex;
@@ -370,8 +439,8 @@ li.list-group-item.custom-list-item {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 800px;
   margin: 0 auto;
+  padding: 0;
 }
 
 .container-catalog-header {
@@ -383,10 +452,7 @@ li.list-group-item.custom-list-item {
 }
 
 .container-catalog-header span {
-    font-family: 'Poppins';
-    font-size: 1em;
-    font-weight: 700;
-    background-color: #f0ca0fa8 ;
+    font-family: 'AbeeZee';
 }
 
 .container-catalog-header h2 {
@@ -404,7 +470,7 @@ li.list-group-item.custom-list-item {
   align-items: center;
   row-gap: 50px;
   padding-left: 0;
-  padding-right: 0;
+  width: 100%;
 }
 
 .list-item {
@@ -507,6 +573,12 @@ li.list-group-item.custom-list-item {
   display: block;
 }
 
+.accordion.accordion-faq {
+  display: flex;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
 /* styles pour la case cochée */
 .my-custom-checkbox .form-check-input:checked {
   background-color: #dfba16;
@@ -516,6 +588,8 @@ li.list-group-item.custom-list-item {
 
 .container-carte {
   background-color: #FFFDF7;
+  height: 80vh;
+  width: 100%;
 }
 
 .container-filters-map {
@@ -556,20 +630,107 @@ li.list-group-item.custom-list-item {
   font-weight: 700;
 }
 
-Container#home {
-  .custom-shaped-div {
-    width: 200px;
-    height: 200px;
-    background-color: black;
-    clip-path: polygon(50% 80%, 100% 50%, 50% 100%, 32% 71%); /* Modifiez les coordonnées pour créer une forme personnalisée */
-  }
-} 
+/* .bg-wave {
+  background-image: url('./images/wave-haikei.svg');
+}
+ */
+.container-nav-page-info {
+  width: 100%;
+}
+
+.blob-bg{
+  background-image: url('./images/blob-test-3.svg');
+  background-repeat: no-repeat;
+  background-position-x: 10%;
+  background-position-y: 30%;
+}
+
+#nav-page-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#nav-page-info button {
+  font-family: 'Poppins';
+  background-color: #F0CA0F;
+  color: black;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: none;
+  padding: 10px;
+}
+
+#nav-page-info button:hover {
+  background-color: #FFFDF7;
+  color: #F0CA0F;
+  border: solid 1pt #F0CA0F;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
+}
+
+.one-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 100px;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto);
+  row-gap: 40px;
+}
+
+.two-col-grid div {
+  order: 1;
+}
+
+.two-col-grid img {
+  order: 2;
+  width: 100%;
+}
+
+.two-col-grid h3 {
+  margin-bottom: 40px;
+}
+
+.two-col-grid.reverse div {
+  order: 2;
+}
+
+.two-col-grid.reverse img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  order: 1;
+}
+
+.two-col-grid.reverse h3 {
+  margin-bottom: 40px;
+}
+
+
+
 #footer-container {
+  grid-area: footer;
   margin-top: 40px;
   padding: 50px 0;
   border-top-style: solid;
-  border-top-color: #0A0901;
-  border-top-width: 1;
+  border-top-color: rgba(123, 132, 132, 0.15);
+  border-top-width: 0.5px;
 }
 
 #footer-container span {
@@ -595,6 +756,16 @@ Container#home {
   } 
   100% {
     transform: translateY(-20px);
+  }
+}
+@keyframes rotate-background {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
+  100% {
+    background-position: 100% 50%;
+    transform: rotate(360deg);
   }
 }
 
@@ -653,6 +824,15 @@ Container#home {
 
 @media screen and (min-width: 769px) {
 
+  h1.title {
+    font-size: 50px;
+  }
+  
+  h3.title {
+    font-size: 40px;
+  }
+
+
   .ticket-programmation-container {
     display: flex;
     flex-direction: column;
@@ -677,6 +857,74 @@ Container#home {
   width: 600px;
 }
 
+.festimap-homepage-container {
+  width: 80%;
+  height: 500px;
+}
+
+.container-faq-group {
+  width: 600px;
+}
+
+.one-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 100px;
+  margin: 50px auto;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+}
+
+.two-col-grid.reverse div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  order: 1;
+  width: 100%;
+}
+
+.two-col-grid.reverse p {
+  width: 70%;
+}
+
+.two-col-grid.reverse img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  order: 2;
+}
+
+.two-col-grid div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  order: 2;
+}
+
+.two-col-grid img {
+  order: 1;
+}
+
+.two-col-grid div > ul > li {
+  text-align: left;
+}
+
+#header p {
+  width: 70%;
+  text-align: center;
+}
+
+
 }
 
 
@@ -684,4 +932,14 @@ Container#home {
     .ticket-list {
     width: 1000px;
     } 
+    .accordion.accordion-faq {
+      max-width: 1000px;
+    }
+    .container-faq-group {
+      width: 1000px;
+    }
+    .container-pict-info-page{
+      max-width: 550px;
+      height: auto;
+    }
 }
