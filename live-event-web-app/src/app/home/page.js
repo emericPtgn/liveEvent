@@ -9,11 +9,20 @@ import Faq from '../../components/faq';
 import FestiMap from '../../utils/mapComponent.js';
 import { Footer } from '../../components/footer';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import '../../App.scss';
 
 const HomePage = () => {
-  const navigate = useNavigate()
-  return <Container fluid className='home-page-bg-color homepage-structure'>
+  const navigate = useNavigate() 
+  
+  return (
+    <>
+          <Helmet>
+          <title>Festival Live Event - La musique en live</title>
+          <meta name="description" content="Découvrez le festival Live Event, l'événement musical incontournable de l'année ! Retrouvez la programmation, les infos pratiques et réservez vos billets dès maintenant." />
+          <meta name="keywords" content="festival, musique, live, programmation, billetterie" />
+          </Helmet>
+          <Container fluid className='home-page-bg-color homepage-structure'>
           <TopBar />
           <Banner />
           <Row>
@@ -74,7 +83,8 @@ const HomePage = () => {
           </Row>
           <Footer />
         </Container>
-};
+        </>
+)};
 
 export default HomePage;
 

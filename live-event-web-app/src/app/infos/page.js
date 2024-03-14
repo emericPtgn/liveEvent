@@ -7,6 +7,7 @@ import quaiGare from '../../images/quai-gare.jpeg'
 import covoiturage from '../../images/covoiturage.jpg'
 import { useNavigate } from 'react-router-dom';
 import { Footer } from "../../components/footer.js";
+import { Helmet } from "react-helmet";
 
 
 export default function VenirAuFestival () {
@@ -14,6 +15,11 @@ export default function VenirAuFestival () {
 
     return (
         <>
+        <Helmet>
+        <title>Comment venir au festival Live Event</title>
+        <meta name="description" content="Découvrez les différents moyens de transport pour vous rendre au festival Live Event et préparez votre voyage dès maintenant !" />
+        <meta name="keywords" content="festival, musique, transport, voyage, accès" />
+        </Helmet>
         <Container className="d-flex flex-column justify-between gap-5">
             <TopBar />
             <div className="container-nav-page-info my-5" >
