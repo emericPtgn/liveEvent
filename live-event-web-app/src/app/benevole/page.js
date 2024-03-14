@@ -6,6 +6,7 @@ import brigade from '../../images/brigade.jpg'
 import psh from '../../images/psh.jpg'
 import accueil from '../../images/accueil.jpg'
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 
 export default function DeviensBenevole () {
@@ -13,6 +14,11 @@ export default function DeviensBenevole () {
 
     return (
         <>
+        <Helmet>
+        <title>Devenir bénévole au festival Live Event</title>
+        <meta name="description" content="Rejoignez l'équipe de bénévoles du festival Live Event et participez à l'organisation de l'événement musical de l'année !" />
+        <meta name="keywords" content="festival, musique, bénévole, événement, organisation" />
+        </Helmet>
         <Container className="d-flex flex-column justify-between gap-5">
             <TopBar />
             <div className="container-nav-page-info my-5" >
