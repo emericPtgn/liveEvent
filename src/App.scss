@@ -1,0 +1,950 @@
+
+
+@import url('https://fonts.googleapis.com/css?family=ABeeZee:700|Proza%20Libre:400');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'AbeeZee';
+}
+
+
+.main-title {
+  font-family: 'AbeeZee';
+  font-size: 24px;
+  color: #0A0901;
+}
+
+.title-header {
+  font-family: 'Poppins';
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+
+
+$theme-colors: (
+  'text': #0A0901,
+  'background': #FFFDF7,
+  'primary': #f0ca0f,
+  'secondary': #84F77E,
+  'accent': #55F585,
+  'dark-grey': rgba(123, 132, 132, 0.15),
+  'light-grey': rgba(248, 248, 248, 0.354)
+);
+
+h1.title {
+  font-family: "Suez One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+}
+
+h3.title {
+  font-family: "Suez One", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+}
+
+.link-style-1 {
+  text-decoration: none;
+  color: black
+}
+
+
+// Importer Bootstrap
+@import '~bootstrap/scss/bootstrap.scss';
+
+// Définir les teintes d'indigo
+$indigo-100: tint-color($indigo, 80%) !default;
+$indigo-200: tint-color($indigo, 60%) !default;
+$indigo-300: tint-color($indigo, 40%) !default;
+$indigo-400: tint-color($indigo, 20%) !default;
+$indigo-500: $indigo !default;
+$indigo-600: shade-color($indigo, 20%) !default;
+$indigo-700: shade-color($indigo, 40%) !default;
+$indigo-800: shade-color($indigo, 60%) !default;
+$indigo-900: shade-color($indigo, 80%) !default;
+
+
+.my-indigo-element-test {
+  background-color: $indigo-700; 
+  color: $color-contrast-light; 
+}
+
+.my-test-bg-color {
+  background-color: $white; 
+}
+
+
+.navbar-expand {
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.texte-menu-home{
+  font-size: 25px;
+  color: white;
+}
+
+.texte-intro-home {
+  color: white;
+}
+
+.heart-anim-from-banner {
+  z-index: 0;
+}
+
+#bg-color {
+  background-color: #FFFDF7;
+}
+.bg-white {
+  background-color: whitesmoke;
+}
+.bt-border {
+  border-bottom: solid 1pt #7b848426;
+}
+
+.banner {
+  margin-top: 0;
+  padding: 50px 0;
+  height: 500px;
+  background-position : top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.banner .tagline {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  padding: 8px 10px;
+  background: linear-gradient(90.21deg, rgba(170, 54, 124, 0.5) -5.91%n rgba(74, 47, 189, 0.5) 10%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: inline-block;
+  color: #0A0901;
+}
+
+.banner h1  {
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  line-height:  1;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.banner p  {
+  color: #B8B8B8;
+  font-size: 18px;
+  letter-spacing: 0.8px;
+  line-height: 1.5em;
+  width: 96%;
+}
+
+#btn-home-bloc1-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 30px;
+  height: 100px;
+}
+
+.banner button {
+  font-family: 'Poppins';
+  background-color: #F0CA0F;
+  color: black;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: none;
+  padding: 5px 15px;
+}
+
+.banner button svg {
+  font-size: 25px; 
+  margin-left: 10px;
+  transition: 0.3s ease-in-out;
+  line-height: 1;
+}
+
+.banner button:hover svg {
+  margin-left: 25px;
+}
+
+.banner svg.svg-anim  {
+  position: relative;
+  width: 600px;
+  height: 600px;
+  animation: updown 3s linear infinite
+}
+
+.banner .g-anim {
+  position: absolute;
+  top: 0;
+}
+
+.homepage-structure {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 70px;
+}
+
+.homepage-body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  border-top-style: solid;
+  border-top-width: 0.5px;
+  border-top-color: rgba(62, 62, 62, 0.15);
+  padding: 80px 0;
+}
+
+.homepage-body-container h2 span {
+  font-family: 'Poppins';
+  font-weight: 700;
+}
+.homepage-body-container h3 {
+  font-family: 'Suez One';
+  font-weight: 300;
+  margin-bottom: 40px;
+}
+
+.homepage-body-container-header {
+  display: flex;
+  border: 3;
+  border-color: black;
+  border-style: solid;
+  border-radius: 50px;
+  max-width: fit-content;
+  position: absolute;
+  top: -30px;
+  background-color: #FFFDF7;
+
+}
+
+.homepage-body-container-header h1 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 0 20px;
+}
+
+.container-faq-group {
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  background-color: #84f77e26;
+}
+
+.faq-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.bg-blob {
+  src: url(./images/bg/vagues-bg.svg);
+  background-size: cover;
+}
+
+.festimap-homepage-container {
+  width: 100%;
+  height: 500px;
+  z-index: 3;
+}
+
+.festimap-homepage-description-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.festimap-homepage-description-col > div {
+  background-color: rgba(132, 247, 126, 0.15);
+  padding: 30px;
+  width: fit-content;
+}
+
+.festimap-homepage-description-col > div > ul {
+  line-height: 40px;
+}
+
+.festimap-homepage-description-col > div > button {
+  width: fit-content;
+}
+  
+#Path_847:hover {
+  fill: #2a9d8f;
+}
+
+.btn-primary {
+  border-radius: 5%;
+  background-color: #F0CA0F;
+  color: #0A0901;
+  font-family: 'Poppins';
+  font-size: 12px;
+  font-weight: 300;
+  padding: 10px 20px;
+  width: fit-content;
+  border: none;
+}
+
+
+h2.stylish {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 5px 20px;
+}
+
+.sous-titre {
+  width: 90%;
+}
+
+.container-filtre-programmation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 10px;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-bottom: 50px;
+}
+
+.container-programmation {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  row-gap: 40px;
+  column-gap: 20px;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  width: 330px;
+  height: 400px;
+  background-color: rgba(132, 247, 126, 0.15);
+  border-top: 1px solid rgba(123, 132, 132, 0.15);
+}
+
+li.list-group-item.custom-list-item {
+  border-top: 1px solid rgba(123, 132, 132, 0.15);
+}
+
+/* .artist-card-vector-bg {
+  background-image: url('./images/bg/Vector\ 228bg-card-artist-vector.svg');
+} */
+
+.list-group-item-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 10px;
+  row-gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.list-group-item-icon {
+    width: 45px;
+    position: absolute;
+    top: -25px;
+    right: -12px;
+  }
+
+.list-group-item-photo {
+  width: 280px;
+  height: 250px;
+  background-color: #FFFDF7;
+}
+
+.list-group-item-photo > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.list-group-item-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-group-item-footer div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+  border-style: solid;
+  width: 45%;
+  border-color: rgba(123, 132, 132, 0.15);
+  border-width: 0.5px;
+  background-color: #FFF;
+}
+
+.bg-artiste-nom {
+  background-color: rgba(240, 202, 15, 1);
+}
+
+.container-artiste-nom {
+  width: fit-content;
+  border-style: solid;
+  border-width: 0.5px;
+  border-color: rgba(123, 132, 132, 0.15);
+  background-color: #FFF;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+  margin: 0 auto;
+}
+
+
+.concert-artiste-nom {
+  font-family: 'Abeezee';
+  font-size: '15px'
+}
+
+.concert-date-heure  {
+  font-family: 'Abeezee';
+  font-size: 12px;
+}
+
+/* Ajoutez ces styles dans votre fichier de style CSS */
+.list-group-item-with-shadow {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.container-catalog {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.container-catalog-header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px auto;
+}
+
+.container-catalog-header span {
+    font-family: 'AbeeZee';
+}
+
+.container-catalog-header h2 {
+  margin-top: 60px;
+  font-family: 'Poppins';
+  font-weight: 300;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+.ticket-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 50px;
+  padding-left: 0;
+  width: 100%;
+}
+
+.list-item {
+  width: 100%;
+  height: auto;
+  background-color: rgba(132, 247, 126, 0.15);
+  border-radius: 1%;
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgba(123, 132, 132, 0.15);
+}
+
+.ticket {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  height: 130px;
+  width: 100%;
+}
+
+.ticket-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.ticket button {
+  font-family: 'Poppins';
+  border-style: none;
+  font-size: 10px;
+}
+
+.ticket-price-date-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 40px;
+  width: 100%;
+  height: auto;
+}
+
+.ticket-price-date-container span:first-of-type {
+    font-family: 'Poppins';
+    font-size: 15px;
+}
+
+.ticket-price-date-container span:last-of-type {
+  font-family: 'Poppins';
+  font-size: 11px;
+}
+
+.ticket-programmation-container {
+  display: none;
+}
+
+.ticket-date {
+  font-family: 'Poppins';
+  font-size: 12px;
+}
+
+.ticket-artist {
+  font-family: 'Poppins';
+  font-size: 12px;
+}
+
+.ticket-icon {
+  width: 40px;
+  position: absolute;
+  top: -30px;
+  left: 20px;
+}
+
+.accordion {
+  display: flex;
+  flex-direction: column;
+}
+.accordion-item {
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  margin-bottom: 2px; /* Ajoutez une marge entre les éléments de l'accordéon */
+}
+
+.accordion-header {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: #f8f9fa;
+}
+.accordion-body {
+  padding: 1rem;
+  border-top: 1px solid #dee2e6;
+  background-color: #fff;
+  display: block; /* Le corps est initialement masqué */
+}
+
+/* Style pour montrer le corps lorsqu'il est actif */
+.accordion-item.active .accordion-body {
+  display: block;
+}
+
+.accordion.accordion-faq {
+  display: flex;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* styles pour la case cochée */
+.my-custom-checkbox .form-check-input:checked {
+  background-color: #dfba16;
+  border-color: #dfba16; /* Changez la couleur selon vos besoins */
+  /* autres styles */
+}
+
+.container-carte {
+  background-color: #FFFDF7;
+  height: 80vh;
+  width: 100%;
+}
+
+.container-filters-map {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 50px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  flex-wrap: wrap;
+  background-color: rgba(248, 248, 248, 0.54);
+  border-style: solid;
+  border-color: rgba(123, 132, 132, 0.15);
+  border-width: 0.5px;
+}
+
+.container-filtre-map {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(248, 248, 248, 0.354) ;
+  padding: 10px;
+}
+
+.advanced-marker {
+  width: 30px;
+  height: 30px;
+}
+
+.advanced-marker span {
+  cursor: pointer;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.info-window {
+  width: 300px;
+}
+
+.info-window h1,h2,h3,h4,p {
+  font-family: 'Poppins';
+}
+
+.info-window-concert {
+  margin: 10px 0 0;
+}
+
+/* .bg-wave {
+  background-image: url('./images/wave-haikei.svg');
+}
+ */
+.container-nav-page-info {
+  width: 100%;
+}
+
+.blob-bg{
+  background-image: url('./images/blob-test-3.svg');
+  background-repeat: no-repeat;
+  background-position-x: 10%;
+  background-position-y: 30%;
+}
+
+#nav-page-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+#nav-page-info button {
+  font-family: 'Poppins';
+  background-color: #F0CA0F;
+  color: black;
+  font-weight: 300;
+  font-size: 14px;
+  letter-spacing: 0.8px;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: none;
+  padding: 10px;
+}
+
+#nav-page-info button:hover {
+  background-color: #FFFDF7;
+  color: #F0CA0F;
+  border: solid 1pt #F0CA0F;
+}
+
+#header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
+}
+
+.one-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 100px;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(2, auto);
+  row-gap: 40px;
+}
+
+.two-col-grid div {
+  order: 1;
+}
+
+.two-col-grid img {
+  order: 2;
+  width: 100%;
+}
+
+.two-col-grid h3 {
+  margin-bottom: 40px;
+}
+
+.two-col-grid.reverse div {
+  order: 2;
+}
+
+.two-col-grid.reverse img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  order: 1;
+}
+
+.two-col-grid.reverse h3 {
+  margin-bottom: 40px;
+}
+
+
+
+#footer-container {
+  grid-area: footer;
+  margin-top: 40px;
+  padding: 50px 0;
+  border-top-style: solid;
+  border-top-color: rgba(123, 132, 132, 0.15);
+  border-top-width: 0.5px;
+}
+
+#footer-container span {
+  font-size: 12px;
+}
+
+#footer-container .flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+#footer-container .flex-around img {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes updown {
+  0% {
+    transform: translateY(-20px)
+  }
+  50% {
+    transform: translateY(20px);
+  } 
+  100% {
+    transform: translateY(-20px);
+  }
+}
+@keyframes rotate-background {
+  0% {
+    background-position: 0% 50%;
+    transform: rotate(0deg);
+  }
+  100% {
+    background-position: 100% 50%;
+    transform: rotate(360deg);
+  }
+}
+
+.text-rotate > .wrap {
+  border-right: 0.08em solid #666;
+  z-index: 3;
+}
+
+.toRotate {
+  color: #0A0901;
+  font-weight: 300;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.custom-width-btn {
+  width: 50px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 769px) {
+
+  h1.title {
+    font-size: 50px;
+  }
+  
+  h3.title {
+    font-size: 40px;
+  }
+
+
+  .ticket-programmation-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+  .accordion {
+    display: none;
+  }
+
+  .container-catalog-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 65%;
+    margin-top: 50px;
+  }
+
+  .ticket-list {
+  width: 600px;
+}
+
+.festimap-homepage-container {
+  width: 80%;
+  height: 500px;
+}
+
+.container-faq-group {
+  width: 600px;
+}
+
+.one-col-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  row-gap: 100px;
+  margin: 50px auto;
+}
+
+.two-col-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  align-items: center;
+}
+
+.two-col-grid.reverse div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  order: 1;
+  width: 100%;
+}
+
+.two-col-grid.reverse p {
+  width: 70%;
+}
+
+.two-col-grid.reverse img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  order: 2;
+}
+
+.two-col-grid div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  order: 2;
+}
+
+.two-col-grid img {
+  order: 1;
+}
+
+.two-col-grid div > ul > li {
+  text-align: left;
+}
+
+#header p {
+  width: 70%;
+  text-align: center;
+}
+
+
+}
+
+
+@media screen  and (min-width: 1200px) {
+    .ticket-list {
+    width: 1000px;
+    } 
+    .accordion.accordion-faq {
+      max-width: 1000px;
+    }
+    .container-faq-group {
+      width: 1000px;
+    }
+    .container-pict-info-page{
+      max-width: 550px;
+      height: auto;
+    }
+}
