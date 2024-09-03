@@ -63,7 +63,7 @@ function reducer(state, action) {
 
   case 'loadDataForMap2': {
     let markersWithConcerts = addConcertToMarker(state.concerts, action.payload.data)
-    let filters = generateFilters(state.markers2)
+    let filters = generateFilters(markersWithConcerts)
 
     return {
       ...state,

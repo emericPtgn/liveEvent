@@ -17,6 +17,7 @@ const Filters = () => {
   const filters = state.mapFilters2;
   const onFilterChange = (id, isActiv, type) => 
   {dispatch({ type: 'UPDATE_Markers2', payload: { id, isActiv, type } });};
+  console.log(state.mapFilters2)
   const filtersToDisplay = filters.map((filter) => 
   (<Filter key={filter.id} filter={filter} onFilterChange={onFilterChange} />));
 

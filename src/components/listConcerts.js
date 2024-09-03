@@ -35,7 +35,7 @@ export default function ListeConcerts() {
                   </div>
 
                   <div className='list-group-item-photo'>
-                    <img src='/uploads/public_concert.jpg' alt={concert.artiste} />
+                    <img src='https://api.testdwm.fr/uploads/public_concert.jpg' alt={concert.artiste} />
                   </div>
 
                   <div className='list-group-item-footer'>

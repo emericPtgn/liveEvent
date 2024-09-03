@@ -3,7 +3,7 @@ import { useAppContext } from "../context2.js";
 
 async function getDataForProgrammation (dispatch) {
   try {
-    const url = "https://localhost/public/api/activity";
+    const url = "https://api.testdwm.fr/public/api/activity";
     const response = await fetch(url);
     if(!response.ok){
       throw new Error('Erreur fetch concerts');
@@ -19,7 +19,7 @@ async function getDataForProgrammation (dispatch) {
 
 async function getDataForMap (dispatch) {
   try {
-    const url = "https://localhost/public/api/marker";
+    const url = "https://api.testdwm.fr/public/api/marker";
     const response = await fetch(url);
     if(!response.ok){
       throw new Error('Erreur fetch data for map');
@@ -109,10 +109,10 @@ export default function DataLoader() {
 
   useEffect(() => {
     const loadData = async () => {
-      await fetchDataForProgrammation(dispatch);
-      await fetchDataForMap(dispatch);
-      await fetchDataForTickets(dispatch);
-      await fetchDataForFAQ(dispatch);
+      // await fetchDataForProgrammation(dispatch);
+      // await fetchDataForMap(dispatch);
+      // await fetchDataForTickets(dispatch);
+      // await fetchDataForFAQ(dispatch);
       await getDataForProgrammation(dispatch);
       await getDataForMap(dispatch)
     };
