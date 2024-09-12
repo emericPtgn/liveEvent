@@ -4,13 +4,27 @@ export default function addConcertToMarker(concertsEnCours, markers, filterConce
     // Organiser les concerts par scène et date
     concertsEnCours.forEach(concert => {
         const { scene, date } = concert;
+        console.log('scene :', scene, 'date: ', date);
         if (!programmation[scene]) {
             programmation[scene] = {};
         }
         if (!programmation[scene][date]) {
             programmation[scene][date] = [];
         }
+
         programmation[scene][date].push(concert);
+    });
+
+    // Trier les dates dans chaque scène
+    Object.keys(programmation).forEach(scene => {
+        programmation[scene] = Object.keys(programmation[scene])
+        .sort((a, b) => new Date(a.split('-').reverse().join('-')) - new Date(b.split('-').reverse().join('-')))
+        .reduce((acc, date) => {
+            acc[date] = programmation[scene][date];
+            return acc;
+        }, {});
+    
+        console.log(programmation[scene]);
     });
 
     // Filtrer les marqueurs

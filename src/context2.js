@@ -25,6 +25,7 @@ const initialState = {
     {'Libellé': '30-09', 'activ': false}, 
     {'Libellé': '29-09', 'activ': false},
   ],
+  filtres2: [],
   tickets: [],
   cartContent: initialCartContent,
   cartTotal: initialCartTotal,

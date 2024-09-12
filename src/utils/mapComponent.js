@@ -6,7 +6,7 @@ import Tab from 'react-bootstrap/Tab';
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importer les styles Bootstrap
 
 export default function FestiMap() {
-  const positionReferente = { lat: 45.69999536810878, lng: 5.885166511192596 };
+  const positionReferente = { lat: 45.69779926413861, lng: 5.886550609180258 };
   
   return (
     <div style={{ height: '100%', width: '100%' }}>
@@ -47,12 +47,14 @@ const Markers = () => {
 
             {selectedMarker.type === 'scene' && selectedMarker.programmation && (
               <Tabs defaultActiveKey={Object.keys(selectedMarker.programmation)[0]} id="programmation-tabs">
-                {Object.entries(selectedMarker.programmation).map(([date, concerts], index) => (
-                  <Tab eventKey={date} title={date} key={index}>
-                    {concerts.map((concert, idx) => (
-                      <Concert concert={concert} key={idx} />
-                    ))}
-                  </Tab>
+                {Object.entries(selectedMarker.programmation)
+                  .sort(([dateA], [dateB]) => new Date(dateA) - new Date(dateB)) // Tri des dates
+                  .map(([date, concerts], index) => (
+                    <Tab eventKey={date} title={date} key={index}>
+                      {concerts.map((concert, idx) => (
+                        <Concert concert={concert} key={idx} />
+                      ))}
+                    </Tab>
                 ))}
               </Tabs>
             )}
